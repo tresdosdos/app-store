@@ -1,0 +1,14 @@
+app-root{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+app-dashboard{
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  top: 95px;
+  position: relative;
+  width: 95%;
+}

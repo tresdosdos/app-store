@@ -1,0 +1,20 @@
+.header__nav{
+  width: 100%;
+}
+
+.header__nav ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.header__nav li{
+  padding: 15px 0;
+  width: 25%;
+  text-align: center;
+}
+
+.header__nav li:hover{
+  background-color: #24292e;
+  color: #f1af41;
+}
