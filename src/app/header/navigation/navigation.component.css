@@ -18,3 +18,7 @@
   background-color: #24292e;
   color: #f1af41;
 }
+
+.header__nav a{
+  cursor: pointer;
+}
