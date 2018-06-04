@@ -2,6 +2,8 @@
   <ul>
     <li><a routerLink="/">Main page</a></li>
     <li><a routerLink="/categories">Categories</a></li>
+    <li (click)="auth.logIn()" *ngIf="!userInfo.username">Log in</li>
+    <li *ngIf="userInfo.username">{{userInfo.username}}</li>
   </ul>
 </nav>
 

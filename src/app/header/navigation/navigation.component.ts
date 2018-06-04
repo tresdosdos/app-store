@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../../services/auth.service';
+import {USERINFO} from '../../services/user-info';
 
 @Component({
   selector: 'app-navigation',
@@ -6,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-
-  constructor() { }
+  public userInfo = USERINFO;
+  constructor(public auth: AuthService) { }
 
   ngOnInit() {
   }

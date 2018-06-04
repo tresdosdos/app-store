@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {GetDataService} from '../services/get-data.service';
 import {APPS} from '../services/apps';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +10,12 @@ import {APPS} from '../services/apps';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private data: GetDataService) { }
+  constructor(private data: GetDataService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+    const token = this.route.snapshot.queryParams['access_token'];
+    console.log(token);
   }
 
 }
