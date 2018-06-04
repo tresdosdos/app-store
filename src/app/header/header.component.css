@@ -18,3 +18,7 @@ app-navigation{
   margin-right: 15px;
   width: 40%;
 }
+
+app-search{
+  width: 30%;
+}

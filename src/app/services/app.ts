@@ -1,6 +1,6 @@
 export class App {
   logo: string;
-  content_rating: string;
+  content_rating: number;
   app_name: string;
   content_rating_info: string;
   requires_os: string;
@@ -8,7 +8,7 @@ export class App {
   publisher_name: string;
   id: string;
   downloads: string;
-  all_rating: string;
+  all_rating: number;
   app_type: string;
   top_developer: boolean;
   interactive_elements: string;

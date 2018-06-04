@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {GetDataService} from '../../services/get-data.service';
 import {App} from '../../services/app';
+import { APPS } from '../../services/apps';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,7 @@ import {App} from '../../services/app';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  private apps: App[];
+  private apps = APPS;
   public getInfo(): App[] {
     return this.apps;
   }
@@ -18,10 +19,11 @@ export class DashboardComponent implements OnInit {
   constructor(private data: GetDataService) { }
 
   ngOnInit() {
-    this.data.getInfo().subscribe((info) => {
-      this.setInfo(info);
-      console.log(this.getInfo());
-    });
+    if (!APPS.length) {
+      this.data.fetchInfo().subscribe((res) => {
+        APPS.push(...res);
+      });
+    }
   }
 
 }

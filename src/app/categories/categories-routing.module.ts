@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {CategoriesComponent} from './categories.component';
 import {RouterModule, Routes} from '@angular/router';
-import {DashboardComponent} from './app-dashboard/dashboard/dashboard.component';
-import {CategoriesComponent} from './categories/categories.component';
 
 const appRoutes: Routes = [
-  { path: '', component: DashboardComponent},
-  { path: 'categories', component: CategoriesComponent, pathMatch: 'prefix'}
+  { path: 'categories/:category', component: CategoriesComponent}
 ];
 
 @NgModule({
@@ -17,4 +15,4 @@ const appRoutes: Routes = [
   exports: [RouterModule],
   declarations: []
 })
-export class AppRoutingModule { }
+export class CategoriesRoutingModule { }

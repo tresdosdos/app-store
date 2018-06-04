@@ -1,0 +1,13 @@
+<div class="modal__window__backdrop">
+  <div class="modal__window">
+    <div class='user__data__container' *ngIf="user">
+      <app-userdata [user]="user"></app-userdata>
+      <app-user-company [user]="user"></app-user-company>
+    </div>
+    <div class="modal__window__exit__container">
+      <a routerLink="">
+        <img src='../../../assets/exit.svg' alt='exit' class='modal__window__exit'/>
+      </a>
+    </div>
+  </div>
+</div>

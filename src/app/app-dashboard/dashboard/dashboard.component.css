@@ -1,15 +1,7 @@
-app-app{
-  background-color: #f1f1f1;
-  border: 2px solid #24292e;
-  display: flex;
-  flex-direction: column;
-  height: 250px;
-  padding: 15px 10px;
-}
-
 main{
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin: 0 auto;
   top: 95px;
   position: relative;
@@ -17,5 +9,7 @@ main{
 }
 
 .dashboard__app__container{
+  display: flex;
+  justify-content: center;
   width: 25%;
 }

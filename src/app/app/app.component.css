@@ -1,0 +1,43 @@
+.app__name{
+  font-size: 26px;
+  font-weight: 400;
+  margin: 5px auto 0 auto;
+}
+
+.app__dev{
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0 auto;
+}
+
+.app__ratings{
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.app__verified{
+  color: #25633d;
+}
+
+.app__logo{
+  height: 60%;
+  margin: 0 auto;
+  width: 60%;
+}
+
+.app__last-row{
+  display: flex;
+  justify-content: space-between;
+}
+
+.app__container{
+  background-color: #f1f1f1;
+  border: 2px solid #24292e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 250px;
+  padding: 15px 10px;
+  margin: 0 auto 10px auto;
+  width: 250px;
+}

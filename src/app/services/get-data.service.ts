@@ -1,16 +1,43 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { App } from './app';
 import { APPS } from './apps';
+import {Observable} from 'rxjs';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetDataService {
-  private info = APPS;
-  getInfo(): Observable<App[]> {
-    return this.http.get<App[]>('http://localhost:4200/assets/info.json');
+  // TODO: subject behaviour
+  fetchInfo(): Observable<App[]> {
+    return this.http.get<App[]>('./assets/info.json');
   }
-  constructor(private http: HttpClient) { }
+  filterData(category, info): App[] {
+    if (category) {
+      switch (category) {
+        case 'kids': {
+          return info.filter((app) => {
+            return app.content_rating === 6;
+          });
+        }
+        case 'adults': {
+          return info.filter((app) => {
+            return app.content_rating === 18;
+          });
+        }
+        case 'multiplayer': {
+          return info.filter((app) => {
+            return app.content_rating_info === 'Multiplayer';
+          });
+        }
+        default: {
+          this.router.navigate(['/']);
+        }
+      }
+    }
+  }
+  constructor(private http: HttpClient,
+              private router: Router) { }
 }

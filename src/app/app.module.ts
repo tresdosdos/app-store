@@ -7,10 +7,12 @@ import {AppDashboardModule} from './app-dashboard/app-dashboard.module';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './/app-routing.module';
 import {CategoriesModule} from './categories/categories.module';
+import { ModalWindowComponent } from './modal-window/modal-window.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ModalWindowComponent
   ],
   imports: [
     BrowserModule,

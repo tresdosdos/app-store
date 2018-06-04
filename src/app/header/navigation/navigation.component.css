@@ -10,7 +10,7 @@
 
 .header__nav li{
   padding: 15px 0;
-  width: 25%;
+  width: 33%;
   text-align: center;
 }
 
@@ -20,5 +20,7 @@
 }
 
 .header__nav a{
+  color: inherit;
   cursor: pointer;
+  text-decoration: none;
 }
