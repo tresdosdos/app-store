@@ -1,0 +1,12 @@
+.search__component{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  position: relative;
+  top:95px;
+  width: 100%;
+}
+
+.search__app__container{
+  width: 25%;
+}

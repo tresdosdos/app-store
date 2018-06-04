@@ -46,3 +46,13 @@ table {
 app-root{
   font-family: "Roboto",UILanguageFont,Arial,sans-serif;
 }
+
+app-modal-window{
+  position: relative;
+  top: 95px;
+  width: 95%;
+}
+
+app-search-dashboard{
+  width:95%;
+}

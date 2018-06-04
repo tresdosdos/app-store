@@ -38,6 +38,13 @@ export class GetDataService {
       }
     }
   }
+  // search by 2 fields in lowercase
+  findApps(searchLine): App[] {
+    return APPS.filter((app) => {
+      return app.app_name.toLocaleLowerCase().indexOf(searchLine.toLocaleLowerCase()) + 1
+        || app.publisher_name.toLocaleLowerCase().indexOf(searchLine.toLocaleLowerCase()) + 1;
+    });
+  }
   constructor(private http: HttpClient,
               private router: Router) { }
 }

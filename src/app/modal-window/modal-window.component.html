@@ -1,13 +1,9 @@
-<div class="modal__window__backdrop">
-  <div class="modal__window">
-    <div class='user__data__container' *ngIf="user">
-      <app-userdata [user]="user"></app-userdata>
-      <app-user-company [user]="user"></app-user-company>
-    </div>
-    <div class="modal__window__exit__container">
-      <a routerLink="">
-        <img src='../../../assets/exit.svg' alt='exit' class='modal__window__exit'/>
-      </a>
-    </div>
-  </div>
+<div class="app__container_full" *ngIf="isReady">
+  <img src="../../assets/{{app.logo}}" alt="appLogo">
+  <h2>Name of app: {{app.app_name}}</h2>
+  <h3>Age: {{app.content_rating}}+</h3>
+  <h3>Rating: {{app.all_rating}}/5</h3>
+  <h4>Downloads: {{app.downloads}}</h4>
+  <h4>Required os: {{app.requires_os}}</h4>
+  <h5>Price: {{app.price}}</h5>
 </div>

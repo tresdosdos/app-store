@@ -7,7 +7,7 @@
   "requires_os": "4.0.3 and up",
   "file_size": "62M",
   "publisher_name": "Supercell",
-  "id": "com.supercell.clashofclans",
+  "id": "clashofclans",
   "downloads": "100,000,000 - 500,000,000",
   "all_rating": 4.6,
   "app_type": "GAME",
@@ -36,7 +36,7 @@
 "requires_os": "4.0.3 and up",
 "file_size": "62M",
 "publisher_name": "Supercell",
-"id": "com.ea.angrybirds",
+"id": "angrybirds",
 "downloads": "100,000,000 - 500,000,000",
 "all_rating": 4.8,
 "app_type": "GAME",
@@ -55,7 +55,7 @@
 "view Wi-Fi connections"
 ],
 "publisher_id": "Supercell",
-"price": "Free"
+"price": "5$"
 },
   {
     "logo": "fallout-shelter.png",
@@ -64,8 +64,8 @@
     "content_rating_info": "Fantasy Violence",
     "requires_os": "4.0.3 and up",
     "file_size": "62M",
-    "publisher_name": "Supercell",
-    "id": "com.bethesda.fallout",
+    "publisher_name": "Bethesda",
+    "id": "fallout",
     "downloads": "100,000,000 - 500,000,000",
     "all_rating": 4.0,
     "app_type": "GAME",
@@ -93,8 +93,8 @@
     "content_rating_info": "Fantasy Violence",
     "requires_os": "4.0.3 and up",
     "file_size": "62M",
-    "publisher_name": "Supercell",
-    "id": "com.ludia.jurassic",
+    "publisher_name": "Jurassic entertainment",
+    "id": "jurassic",
     "downloads": "100,000,000 - 500,000,000",
     "all_rating": 4.1,
     "app_type": "GAME",
@@ -113,7 +113,7 @@
       "view Wi-Fi connections"
     ],
     "publisher_id": "Supercell",
-    "price": "Free"
+    "price": "10$"
   },
   {
     "logo": "plants.webp",
@@ -122,8 +122,8 @@
     "content_rating_info": "Fantasy Violence",
     "requires_os": "4.0.3 and up",
     "file_size": "62M",
-    "publisher_name": "Supercell",
-    "id": "com.ea.plantsvszombie",
+    "publisher_name": "Electronic Arts",
+    "id": "plantsvszombie",
     "downloads": "100,000,000 - 350,000,000",
     "all_rating": 4.4,
     "app_type": "GAME",

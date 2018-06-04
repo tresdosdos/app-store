@@ -8,11 +8,13 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './/app-routing.module';
 import {CategoriesModule} from './categories/categories.module';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
+import { SearchDashboardComponent } from './search-dashboard/search-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ModalWindowComponent
+    ModalWindowComponent,
+    SearchDashboardComponent
   ],
   imports: [
     BrowserModule,

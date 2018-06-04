@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KEYBOARD } from '../../constants';
 import { GetDataService } from '../../services/get-data.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -9,10 +10,11 @@ import { GetDataService } from '../../services/get-data.service';
 })
 export class SearchComponent implements OnInit {
   public searchLine: string;
-  constructor(private data: GetDataService) { }
+  constructor(private data: GetDataService,
+              private router: Router) { }
   handleClick(e): void {
     if (e.keyCode === KEYBOARD.ENTER) {
-      console.log('pressed' + this.searchLine);
+      this.router.navigate(['/search/' + this.searchLine]);
     }
   }
   ngOnInit() {

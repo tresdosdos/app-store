@@ -1,10 +1,10 @@
-<div class="app__container">
-  <img src="../../../assets/{{this.app.logo}}" class='app__logo'/>
-  <h2 class="app__name">{{this.app.app_name}}</h2>
-  <h3 class="app__dev">{{this.app.publisher_name}}</h3>
+<div class="app__container" (click)="toggleModal()">
+  <img src="../../../assets/{{app.logo}}" class='app__logo'/>
+  <h2 class="app__name">{{app.app_name}}</h2>
+  <h3 class="app__dev">{{app.publisher_name}}</h3>
   <div class="app__last-row">
-    <h4 class="app__ratings">{{this.app.all_rating}}/5</h4>
-    <h4 class="app__verified" *ngIf="this.app.top_developer">Verified</h4>
+    <h4 class="app__ratings">{{app.all_rating}}/5</h4>
+    <h4 class="app__verified" *ngIf="app.top_developer">Verified</h4>
   </div>
 </div>
 

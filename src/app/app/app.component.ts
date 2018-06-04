@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { App } from '../services/app';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-app',
@@ -8,8 +9,11 @@ import { App } from '../services/app';
 })
 export class AppComponent implements OnInit {
   @Input() app: App;
-  constructor() { }
-
+  constructor(private router: Router,
+              ) { }
+  toggleModal(): void {
+    this.router.navigate(['/app/' + this.app.id]);
+  }
   ngOnInit() {
   }
 
