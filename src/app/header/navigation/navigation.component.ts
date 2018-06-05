@@ -9,9 +9,14 @@ import {USERINFO} from '../../services/user-info';
 })
 export class NavigationComponent implements OnInit {
   public userInfo = USERINFO;
+  isMenuOpen: boolean;
   constructor(public auth: AuthService) { }
-
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+    console.log(localStorage.appStoreToken);
+  }
   ngOnInit() {
+    this.isMenuOpen = false;
   }
 
 }

@@ -24,3 +24,7 @@
   cursor: pointer;
   text-decoration: none;
 }
+
+.user-panel__container{
+  position: relative;
+}

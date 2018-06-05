@@ -5,6 +5,7 @@ import { HeaderComponent } from './header.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
+import { UserMenuComponent } from './user-menu/user-menu.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   exports: [HeaderComponent],
-  declarations: [NavigationComponent, HeaderComponent, SearchComponent]
+  declarations: [NavigationComponent, HeaderComponent, SearchComponent, UserMenuComponent]
 })
 export class HeaderModule { }
