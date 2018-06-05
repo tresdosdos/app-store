@@ -13,7 +13,6 @@ export class NavigationComponent implements OnInit {
   constructor(public auth: AuthService) { }
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
-    console.log(localStorage.appStoreToken);
   }
   ngOnInit() {
     this.isMenuOpen = false;

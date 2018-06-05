@@ -6,13 +6,17 @@ import {CategoriesComponent} from './categories/categories.component';
 import {ModalWindowComponent} from './modal-window/modal-window.component';
 import {SearchDashboardComponent} from './search-dashboard/search-dashboard.component';
 import {HeaderComponent} from './header/header.component';
+import {AdminPanelComponent} from './admin-panel/admin-panel.component';
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'app/:id', component: ModalWindowComponent },
   { path: 'search/:id', component: SearchDashboardComponent },
-  { path: 'auth', component: HeaderComponent}
+  { path: 'auth', component: HeaderComponent },
+  { path: 'admin/panel', component: AdminPanelComponent },
+  // TODO: create a null component
+  { path: '**', component: HeaderComponent }
 ];
 
 @NgModule({

@@ -9,12 +9,14 @@ import { AppRoutingModule } from './/app-routing.module';
 import {CategoriesModule} from './categories/categories.module';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { SearchDashboardComponent } from './search-dashboard/search-dashboard.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ModalWindowComponent,
-    SearchDashboardComponent
+    SearchDashboardComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,
