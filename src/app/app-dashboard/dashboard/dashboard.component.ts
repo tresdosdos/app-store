@@ -3,6 +3,7 @@ import {GetDataService} from '../../services/get-data.service';
 import {App} from '../../services/app';
 import { APPS } from '../../services/apps';
 import {AuthService} from '../../services/auth.service';
+import {THEME} from '../../services/theme-info';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +12,7 @@ import {AuthService} from '../../services/auth.service';
 })
 export class DashboardComponent implements OnInit {
   private apps = APPS;
+  public theme = THEME;
   public getInfo(): App[] {
     return this.apps;
   }

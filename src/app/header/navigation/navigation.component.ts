@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {USERINFO} from '../../services/user-info';
+import {THEME} from '../../services/theme-info';
 
 @Component({
   selector: 'app-navigation',
@@ -9,6 +10,7 @@ import {USERINFO} from '../../services/user-info';
 })
 export class NavigationComponent implements OnInit {
   public userInfo = USERINFO;
+  public theme = THEME;
   isMenuOpen: boolean;
   constructor(public auth: AuthService) { }
   toggleMenu(): void {

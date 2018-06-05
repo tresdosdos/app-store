@@ -1,0 +1,61 @@
+.admin-panel__container{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  top: 95px;
+  position: relative;
+  width: 95%;
+}
+
+.admin-panel__dashboard-button_on{
+  background-color: #f1f1f1;
+  color: #000;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  padding: 15px 20px;
+}
+
+.admin-panel__dashboard-button_on::after{
+  content: 'Toggle light theme';
+}
+
+.admin-panel__dashboard-button_off{
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  padding: 15px 20px;
+}
+
+.admin-panel__dashboard-button_off::after{
+  content: 'Toggle dark theme';
+}
+
+
+.admin-panel__categories-button_on{
+  background-color: #2c4f78;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  padding: 15px 20px;
+}
+
+.admin-panel__categories-button_on::after{
+  content: 'Toggle categories off';
+}
+
+.admin-panel__categories-button_off{
+  background-color: #782f32;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  padding: 15px 20px;
+}
+
+.admin-panel__categories-button_off::after{
+  content: 'Toggle categories on';
+}

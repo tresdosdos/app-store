@@ -10,13 +10,13 @@ import {AdminPanelComponent} from './admin-panel/admin-panel.component';
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent },
-  { path: 'categories', component: CategoriesComponent },
+  { path: 'categories', component: CategoriesComponent, pathMatch: 'prefix' },
   { path: 'app/:id', component: ModalWindowComponent },
   { path: 'search/:id', component: SearchDashboardComponent },
   { path: 'auth', component: HeaderComponent },
   { path: 'admin/panel', component: AdminPanelComponent },
   // TODO: create a null component
-  { path: '**', component: HeaderComponent }
+  //{ path: '**', component: HeaderComponent }
 ];
 
 @NgModule({
