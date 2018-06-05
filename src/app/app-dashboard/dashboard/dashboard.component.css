@@ -19,5 +19,6 @@ main{
 .dashboard__app__container{
   display: flex;
   flex-basis: 25%;
+  margin: 0 auto;
   justify-content: center;
 }

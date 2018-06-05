@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 export class AdminPanelComponent implements OnInit {
   public userInfo = USERINFO;
   public toggleCategories: string;
+  public toggleLogIn: string;
   public toggleTheme: string;
   constructor(private router: Router) { }
   toggleThemeColor(): void {
@@ -31,10 +32,19 @@ export class AdminPanelComponent implements OnInit {
         this.toggleCategories = 'off';
       }
     }
+    if (button === 'logIn') {
+      THEME.logIn = !THEME.logIn;
+      if (this.toggleLogIn === 'off') {
+        this.toggleLogIn = 'on';
+      } else {
+        this.toggleLogIn = 'off';
+      }
+    }
   }
   ngOnInit() {
     this.toggleTheme = 'off';
     this.toggleCategories = 'off';
+    this.toggleLogIn = 'off';
     if (this.userInfo.rights !== 'admin') {
       this.router.navigate(['/']);
     }

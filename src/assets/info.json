@@ -1,6 +1,6 @@
 [
 {
-  "logo": "clash.webp",
+  "logo": "clash.png",
   "content_rating": 10,
   "app_name": "Clash of Clans",
   "content_rating_info": "Multiplayer",
@@ -39,7 +39,7 @@
   "price": "Free"
 },
 {
-  "logo": "jurassic.webp",
+  "logo": "jurassic.png",
   "content_rating": 18,
   "app_name": "Jurassic World",
   "content_rating_info": "Fantasy Violence",
@@ -52,7 +52,7 @@
   "price": "10$"
 },
 {
-  "logo": "plants.webp",
+  "logo": "plants.png",
   "content_rating": 6,
   "app_name": "Plants vs. Zombies",
   "content_rating_info": "Fantasy Violence",

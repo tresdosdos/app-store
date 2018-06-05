@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { App } from '../services/app';
 import {Router} from '@angular/router';
-import {Theme} from '../services/theme';
+import {THEME} from '../services/theme-info';
 
 @Component({
   selector: 'app-app',
@@ -10,7 +10,7 @@ import {Theme} from '../services/theme';
 })
 export class AppComponent implements OnInit {
   @Input() app: App;
-  @Input() theme: Theme;
+  public theme = THEME;
   constructor(private router: Router,
               ) { }
   toggleModal(): void {
