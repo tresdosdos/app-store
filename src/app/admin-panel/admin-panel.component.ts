@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { USERINFO } from '../services/user-info';
 import { THEME } from '../services/theme-info';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-panel',
@@ -10,44 +10,46 @@ import {Router} from '@angular/router';
 })
 export class AdminPanelComponent implements OnInit {
   public userInfo = USERINFO;
-  public toggleCategories: string;
-  public toggleLogIn: string;
-  public toggleTheme: string;
+  public toggling: {
+    toggleCategories: string;
+    toggleLogIn: string;
+    toggleTheme: string;
+  };
   constructor(private router: Router) { }
   toggleThemeColor(): void {
     if (THEME.color === 'light') {
       THEME.color = 'dark';
-      this.toggleTheme = 'on';
     } else {
       THEME.color = 'light';
-      this.toggleTheme = 'off';
     }
+    this.toggling.toggleTheme = THEME.color;
   }
   toggleButton(button): void {
     if (button === 'categories') {
       THEME.categories = !THEME.categories;
-      if (this.toggleCategories === 'off') {
-        this.toggleCategories = 'on';
+      if (this.toggling.toggleCategories === 'off') {
+        this.toggling.toggleCategories = 'on';
       } else {
-        this.toggleCategories = 'off';
+        this.toggling.toggleCategories = 'off';
       }
     }
     if (button === 'logIn') {
       THEME.logIn = !THEME.logIn;
-      if (this.toggleLogIn === 'off') {
-        this.toggleLogIn = 'on';
+      if (this.toggling.toggleLogIn === 'off') {
+        this.toggling.toggleLogIn = 'on';
       } else {
-        this.toggleLogIn = 'off';
+        this.toggling.toggleLogIn = 'off';
       }
     }
   }
   ngOnInit() {
-    this.toggleTheme = 'off';
-    this.toggleCategories = 'off';
-    this.toggleLogIn = 'off';
+    this.toggling = {
+      toggleTheme: 'light',
+      toggleCategories: 'off',
+      toggleLogIn: 'off'
+    };
     if (this.userInfo.rights !== 'admin') {
       this.router.navigate(['/']);
     }
   }
-
 }

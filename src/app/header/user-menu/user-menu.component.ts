@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-import {Router} from '@angular/router';
-import {TokenizingService} from '../../services/tokenizing.service';
-import {AuthService} from '../../services/auth.service';
-import {REDIRECT_URI} from '../../constants';
+import { TokenizingService } from '../../services/tokenizing.service';
+import { AuthService } from '../../services/auth.service';
+import { REDIRECT_URI } from '../../constants';
 
 @Component({
   selector: 'app-user-menu',

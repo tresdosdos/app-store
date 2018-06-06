@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { App } from '../services/app';
-import {Router} from '@angular/router';
-import {THEME} from '../services/theme-info';
+import { Router } from '@angular/router';
+import { THEME } from '../services/theme-info';
 
 @Component({
   selector: 'app-app',

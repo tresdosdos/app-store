@@ -3,8 +3,8 @@ import { GetDataService } from '../services/get-data.service';
 import { App } from '../services/app';
 import { APPS } from '../services/apps';
 import { ActivatedRoute } from '@angular/router';
-import {AuthService} from '../services/auth.service';
-import {TokenizingService} from '../services/tokenizing.service';
+import { AuthService } from '../services/auth.service';
+import { TokenizingService } from '../services/tokenizing.service';
 
 @Component({
   selector: 'app-categories',

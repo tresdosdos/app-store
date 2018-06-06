@@ -1,86 +1,109 @@
 .admin-panel__container{
   align-items: center;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
   margin: 0 auto;
-  top: 95px;
+  top: 115px;
   position: relative;
   width: 95%;
 }
 
-.admin-panel__dashboard-button_on{
-  background-color: #f1f1f1;
-  color: #000;
-  border: none;
-  border-radius: 15px;
-  outline: none;
-  padding: 15px 20px;
+.admin-panel__user-info__container{
+  display: flex;
+  flex-direction: column;
 }
 
-.admin-panel__dashboard-button_on::after{
-  content: 'Toggle light theme';
+.admin-panel__buttons__container{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.admin-panel__dashboard-button_off{
+.admin-panel__buttons__container button{
+  margin: 5px 0;
+}
+
+.admin-panel__button_dark{
   background-color: #000;
   color: #fff;
   border: none;
   border-radius: 15px;
+  height: 50px;
   outline: none;
   padding: 15px 20px;
+  position: relative;
+  width: 150px;
 }
 
-.admin-panel__dashboard-button_off::after{
-  content: 'Toggle dark theme';
+.admin-panel__button_light{
+  background-color: #f1f1f1;
+  color: #000;
+  border: none;
+  border-radius: 15px;
+  height: 50px;
+  outline: none;
+  padding: 15px 20px;
+  position: relative;
+  width: 150px;
 }
 
 
-.admin-panel__categories-button_on{
+.admin-panel__button_on{
   background-color: #2c4f78;
   border: none;
   border-radius: 15px;
+  height: 50px;
   outline: none;
   padding: 15px 20px;
+  position: relative;
+  width: 150px;
 }
 
-.admin-panel__categories-button_on::after{
-  content: 'Toggle categories off';
-}
-
-.admin-panel__categories-button_off{
+.admin-panel__button_off{
   background-color: #782f32;
   border: none;
   border-radius: 15px;
+  height: 50px;
   outline: none;
   padding: 15px 20px;
+  position: relative;
+  width: 150px;
 }
 
-.admin-panel__categories-button_off::after{
-  content: 'Toggle log in on';
+.admin-panel__button__slider_dark{
+  background-color: #f1af41;
+  border-radius: 40%;
+  padding: 15px 15px;
+  position: absolute;
+  left: 5px;
+  top: 10px;
 }
 
-
-.admin-panel__logIn-button_on{
-  background-color: #2c4f78;
-  border: none;
-  border-radius: 15px;
-  outline: none;
-  padding: 15px 20px;
+.admin-panel__button__slider_light{
+  background-color: #25633d;
+  border-radius: 40%;
+  padding: 15px 15px;
+  position: absolute;
+  left: 115px;
+  top: 10px;
 }
 
-.admin-panel__logIn-button_on::after{
-  content: 'Toggle log in off';
+.admin-panel__button__slider_on{
+  background-color: #784a61;
+  border-radius: 40%;
+  padding: 15px 15px;
+  position: absolute;
+  left: 5px;
+  top: 10px;
 }
 
-.admin-panel__logIn-button_off{
-  background-color: #782f32;
-  border: none;
-  border-radius: 15px;
-  outline: none;
-  padding: 15px 20px;
-}
-
-.admin-panel__logIn-button_off::after{
-  content: 'Toggle log in on';
+.admin-panel__button__slider_off{
+  background-color: #36783c;
+  border-radius: 40%;
+  padding: 15px 15px;
+  position: absolute;
+  left: 115px;
+  top: 10px;
 }

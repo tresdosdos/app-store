@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KEYBOARD } from '../../constants';
 import { GetDataService } from '../../services/get-data.service';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
