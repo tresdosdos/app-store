@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { App } from './app';
 import { APPS } from './apps';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 
@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class GetDataService {
-  // TODO: subject behaviour
   fetchInfo(): Observable<App[]> {
     return this.http.get<App[]>('./assets/info.json');
   }

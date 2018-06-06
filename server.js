@@ -7,8 +7,8 @@ const request = require('request');
 const CLIENT_ID = 'e538cfcbe2e6441ca9575cc7e7873b62';
 const CLIENT_SECRET = '506a292cb82940f885fa28dc30e6ef70';
 
-//const REDIRECT_URI = 'http://localhost:5000';
-const REDIRECT_URI = 'https://smartextask-app-store.herokuapp.com';
+const REDIRECT_URI = 'http://localhost:5000';
+//const REDIRECT_URI = 'https://smartextask-app-store.herokuapp.com';
 
 app.use(express.static(__dirname + '/dist/app-store'));
 

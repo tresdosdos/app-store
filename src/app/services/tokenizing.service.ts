@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {USERINFO} from './user-info';
-import {Observable} from 'rxjs';
-import {User} from './user';
-import {HttpClient} from '@angular/common/http';
-import {AuthService} from './auth.service';
+import { USERINFO } from './user-info';
+import { Observable } from 'rxjs';
+import { User } from './user';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +12,16 @@ export class TokenizingService {
   remoteTokenFetch(): void {
     const code = this.getCode();
     if (code.length === 32) {
-      fetch('/gettoken', {method: 'post', headers: {'Content-Type': 'application/json'
-        }, body: JSON.stringify({code: code})}).then(res => res.json()).then(res => {
-        this.saveLocalToken(res.access_token);
-        this.auth.setUserData({data: res.user});
-      });
+      fetch('/gettoken', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({code: code})
+      })
+        .then(res => res.json())
+        .then(res => {
+          this.saveLocalToken(res.access_token);
+          this.auth.setUserData({data: res.user});
+        });
     }
   }
   deleteLocalToken(): void {
@@ -33,8 +38,7 @@ export class TokenizingService {
   }
   getCode(): string {
     const url = window.location.href;
-    const code = url.slice(url.indexOf('code') + 5, url.length - 2);
-    return code;
+    return url.slice(url.indexOf('code') + 5, url.length - 2);
   }
   getUserData(token): Observable<any> {
     this.saveLocalToken(token);
