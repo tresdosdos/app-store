@@ -3,6 +3,7 @@ import { App } from '../services/app';
 import { ActivatedRoute } from '@angular/router';
 import { APPS } from '../services/apps';
 import {GetDataService} from '../services/get-data.service';
+import {TokenizingService} from '../services/tokenizing.service';
 
 @Component({
   selector: 'app-modal-window',
@@ -15,7 +16,8 @@ export class ModalWindowComponent implements OnInit {
   public app: App;
   public isReady: boolean;
   constructor(private route: ActivatedRoute,
-              private data: GetDataService) { }
+              private data: GetDataService,
+              private token: TokenizingService) { }
   getApp(): any {
         return this.apps.filter((app) => {
           return app.id === this.id;
@@ -23,13 +25,13 @@ export class ModalWindowComponent implements OnInit {
   }
   ngOnInit() {
     this.isReady = false;
+    this.token.tokenCheck();
   if (!APPS.length) {
     this.data.fetchInfo().subscribe((res) => {
       APPS.push(...res);
     this.route.params.subscribe(params => {
       this.id = params['id'];
         this.app = this.getApp();
-        console.log(this.app);
         this.isReady = true;
     });
     });

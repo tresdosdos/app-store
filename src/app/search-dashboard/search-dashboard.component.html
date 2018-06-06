@@ -1,4 +1,8 @@
 <div class="search__component">
+  <div class="search__app__container" *ngIf="error">
+    <h2>{{error}}</h2>
+    <a routerLink="/">Go to main page</a>
+  </div>
   <div *ngFor="let app of app" class="search__app__container">
     <app-app [app]="app"></app-app>
   </div>

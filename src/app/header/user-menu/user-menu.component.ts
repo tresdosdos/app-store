@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../services/auth.service';
+
 import {Router} from '@angular/router';
+import {TokenizingService} from '../../services/tokenizing.service';
+import {AuthService} from '../../services/auth.service';
+import {REDIRECT_URI} from '../../constants';
 
 @Component({
   selector: 'app-user-menu',
@@ -9,11 +12,11 @@ import {Router} from '@angular/router';
 })
 export class UserMenuComponent implements OnInit {
 
-  constructor(public auth: AuthService,
-              private router: Router) { }
+  constructor(private token: TokenizingService,
+              public auth: AuthService) { }
   logOut(): void {
-    this.auth.deleteLocalToken();
-    this.router.navigate(['/']);
+    this.token.deleteLocalToken();
+    window.location.href = REDIRECT_URI;
   }
   ngOnInit() {
   }

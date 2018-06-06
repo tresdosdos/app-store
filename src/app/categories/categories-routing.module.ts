@@ -10,7 +10,7 @@ const categoriesRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(categoriesRoutes)
+    RouterModule.forRoot(categoriesRoutes, {useHash: true})
   ],
   exports: [RouterModule],
   declarations: []

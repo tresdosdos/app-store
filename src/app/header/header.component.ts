@@ -11,12 +11,9 @@ import {THEME} from '../services/theme-info';
 })
 export class HeaderComponent implements OnInit {
   public theme = THEME;
-  constructor(private data: GetDataService,
-              private route: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit() {
-    const token = this.route.snapshot.queryParams['access_token'];
-    console.log(token);
   }
 
 }

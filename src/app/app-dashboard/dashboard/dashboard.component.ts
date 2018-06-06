@@ -4,6 +4,7 @@ import {App} from '../../services/app';
 import { APPS } from '../../services/apps';
 import {AuthService} from '../../services/auth.service';
 import {THEME} from '../../services/theme-info';
+import {TokenizingService} from '../../services/tokenizing.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,13 +18,10 @@ export class DashboardComponent implements OnInit {
     return this.apps;
   }
   constructor(private data: GetDataService,
-              private auth: AuthService) { }
+              private auth: AuthService,
+              private token: TokenizingService) { }
   ngOnInit() {
     this.auth.appsInfoCheck();
-    if (this.auth.getLocalToken()) {
-      this.auth.localTokenFetch();
-    } else {
-      this.auth.remoteTokenFetch();
-    }
+    this.token.tokenCheck();
   }
 }
