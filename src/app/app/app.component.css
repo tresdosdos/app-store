@@ -37,6 +37,7 @@
   height: 250px;
   padding: 15px 10px;
   margin: 0 auto 10px auto;
+  position: relative;
   width: 250px;
 }
 
@@ -50,5 +51,14 @@
   height: 250px;
   padding: 15px 10px;
   margin: 0 auto 10px auto;
+  position: relative;
   width: 250px;
+}
+
+.app__container__hint{
+  background-color: #784b4b;
+  position: absolute;
+  left: 95%;
+  top: 0;
+  width: 70px;
 }
