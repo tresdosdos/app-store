@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
 import { CLIENT_ID, REDIRECT_URI } from '../../constants';
 import { USERINFO } from '../../user-info';
-import { AppsInfo } from '../../apps-info';
-import { GetDataService } from '../../app-dashboard/data-service/get-data.service';
 
 @Injectable({
   providedIn: 'root'

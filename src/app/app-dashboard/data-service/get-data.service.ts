@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { App } from '../../mock-schemas/app';
 import { AppsInfo } from '../../apps-info';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import {HttpServiceService} from '../../shared-services/http-service/http-service.service';
+import { HttpServiceService } from '../../shared-services/http-service/http-service.service';
 
 
 @Injectable({
