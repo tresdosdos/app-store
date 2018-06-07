@@ -40,6 +40,10 @@ app.post('/gettoken', function (req, res) {
   });
 });
 
+app.get('/*/*', function(req, res){
+  res.sendFile(path.join(__dirname +'/dist/app-store/index.html'));
+});
+
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname +'/dist/app-store/index.html'));
 });

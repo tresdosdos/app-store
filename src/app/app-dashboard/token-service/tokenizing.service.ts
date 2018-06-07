@@ -32,7 +32,8 @@ export class TokenizingService {
   }
   getCode(): string {
     const url = window.location.href;
-    return url.slice(url.indexOf('code') + 5, url.length - 2);
+    console.log(url);
+    return url.slice(url.indexOf('code') + 5, url.length);
   }
   getUserData(token): Observable<any> {
     this.saveLocalToken(token);
