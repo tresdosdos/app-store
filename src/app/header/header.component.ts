@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {THEME} from '../services/theme-info';
+import { THEME } from '../theme-info';
 
 @Component({
   selector: 'app-header',

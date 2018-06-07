@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { GetDataService } from '../../services/get-data.service';
-import { App } from '../../services/app';
-import { APPS } from '../../services/apps';
-import { AuthService } from '../../services/auth.service';
-import { THEME } from '../../services/theme-info';
-import { TokenizingService } from '../../services/tokenizing.service';
+import { GetDataService } from '../data-service/get-data.service';
+import { App } from '../../mock-schemas/app';
+import { AppsInfo } from '../../apps-info';
+import { THEME } from '../../theme-info';
+import { TokenizingService } from '../token-service/tokenizing.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,16 +11,15 @@ import { TokenizingService } from '../../services/tokenizing.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  private apps = APPS;
+  private apps = AppsInfo;
   public theme = THEME;
   constructor(private data: GetDataService,
-              private auth: AuthService,
               private token: TokenizingService) { }
   public getInfo(): App[] {
     return this.apps;
   }
   ngOnInit() {
-    this.auth.appsInfoCheck();
+    this.data.appsInfoCheck();
     this.token.tokenCheck();
   }
 }

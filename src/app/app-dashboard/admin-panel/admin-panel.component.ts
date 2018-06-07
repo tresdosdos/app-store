@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { USERINFO } from '../services/user-info';
-import { THEME } from '../services/theme-info';
+import { USERINFO } from '../../user-info';
+import { THEME } from '../../theme-info';
 import { Router } from '@angular/router';
 
 @Component({

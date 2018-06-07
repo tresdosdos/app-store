@@ -1,4 +1,4 @@
-import {Theme} from './theme';
+import {Theme} from './mock-schemas/theme';
 
 export const THEME: Theme = {
   color: 'light',

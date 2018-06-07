@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { GetDataService } from '../services/get-data.service';
-import { App } from '../services/app';
-import { APPS } from '../services/apps';
+import { GetDataService } from '../data-service/get-data.service';
+import { App } from '../../mock-schemas/app';
+import { AppsInfo } from '../../apps-info';
 import { ActivatedRoute } from '@angular/router';
-import { AuthService } from '../services/auth.service';
-import { TokenizingService } from '../services/tokenizing.service';
+import { TokenizingService } from '../token-service/tokenizing.service';
 
 @Component({
   selector: 'app-categories',
@@ -12,7 +11,7 @@ import { TokenizingService } from '../services/tokenizing.service';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
-  private apps = APPS;
+  private apps = AppsInfo;
   public filteredArr: App[];
   public category: string;
   public symbol: string;
@@ -20,7 +19,6 @@ export class CategoriesComponent implements OnInit {
   public error: string;
   constructor(private data: GetDataService,
               private route: ActivatedRoute,
-              private auth: AuthService,
               private token: TokenizingService) {
   }
   toggleCategoriesMenu(): void {
@@ -47,6 +45,6 @@ export class CategoriesComponent implements OnInit {
         }
       });
     };
-    this.auth.appsInfoCheck(func);
+    this.data.appsInfoCheck(func);
   }
 }

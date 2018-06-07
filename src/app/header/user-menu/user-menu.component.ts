@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenizingService } from '../../services/tokenizing.service';
-import { AuthService } from '../../services/auth.service';
+import { TokenizingService } from '../../app-dashboard/token-service/tokenizing.service';
+import { AuthService } from '../auth-service/auth.service';
 import { REDIRECT_URI } from '../../constants';
 
 @Component({

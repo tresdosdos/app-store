@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../services/auth.service';
-import {USERINFO} from '../../services/user-info';
-import {THEME} from '../../services/theme-info';
+import {AuthService} from '../auth-service/auth.service';
+import {USERINFO} from '../../user-info';
+import {THEME} from '../../theme-info';
 
 @Component({
   selector: 'app-navigation',

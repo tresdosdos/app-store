@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { App } from './app';
-import { APPS } from './apps';
+import { App } from '../../mock-schemas/app';
+import { AppsInfo } from '../../apps-info';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -39,10 +39,22 @@ export class GetDataService {
   }
   // search by 2 fields in lowercase
   findApps(searchLine): App[] {
-    return APPS.filter((app) => {
+    return AppsInfo.filter((app) => {
       return app.app_name.toLocaleLowerCase().indexOf(searchLine.toLocaleLowerCase()) + 1
         || app.publisher_name.toLocaleLowerCase().indexOf(searchLine.toLocaleLowerCase()) + 1;
     });
+  }
+  appsInfoCheck(func = function () {
+    return;
+  }): void {
+    if (!AppsInfo.length) {
+      this.fetchInfo().subscribe((res) => {
+        AppsInfo.push(...res);
+        func();
+      });
+    } else {
+      func();
+    }
   }
   constructor(private http: HttpClient,
               private router: Router) { }

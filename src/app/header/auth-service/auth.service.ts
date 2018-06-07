@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CLIENT_ID, REDIRECT_URI } from '../constants';
-import { USERINFO } from './user-info';
-import { APPS } from './apps';
-import { GetDataService } from './get-data.service';
+import { CLIENT_ID, REDIRECT_URI } from '../../constants';
+import { USERINFO } from '../../user-info';
+import { AppsInfo } from '../../apps-info';
+import { GetDataService } from '../../app-dashboard/data-service/get-data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,18 +22,6 @@ export class AuthService {
       USERINFO.rights = 'admin';
     } else {
       USERINFO.rights = 'logged';
-    }
-  }
-  appsInfoCheck(func = function () {
-    return;
-  }): void {
-    if (!APPS.length) {
-      this.data.fetchInfo().subscribe((res) => {
-        APPS.push(...res);
-        func();
-      });
-    } else {
-      func();
     }
   }
   checkRights(): string {

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { App } from '../services/app';
+import { App } from '../../mock-schemas/app';
 import { Router } from '@angular/router';
-import { THEME } from '../services/theme-info';
-import { AuthService } from '../services/auth.service';
+import { THEME } from '../../theme-info';
+import { AuthService } from '../../header/auth-service/auth.service';
 
 @Component({
   selector: 'app-app',

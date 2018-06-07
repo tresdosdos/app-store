@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { App } from '../services/app';
-import { GetDataService } from '../services/get-data.service';
-import { APPS } from '../services/apps';
+import { App } from '../../mock-schemas/app';
+import { GetDataService } from '../data-service/get-data.service';
 import { ActivatedRoute } from '@angular/router';
-import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-search-dashboard',
@@ -16,15 +14,13 @@ export class SearchDashboardComponent implements OnInit {
   public isReady: boolean;
   public error: string;
   constructor(private route: ActivatedRoute,
-              private data: GetDataService,
-              private auth: AuthService) { }
+              private data: GetDataService) { }
   ngOnInit() {
     this.isReady = false;
     const func = () => {
       this.route.params.subscribe(params => {
         this.id = params['id'];
         this.app = this.data.findApps(this.id);
-        console.log(this.app);
         if (this.app.length === 0) {
           this.error = 'There is no matches';
         } else {
@@ -33,6 +29,6 @@ export class SearchDashboardComponent implements OnInit {
         this.isReady = true;
       });
     };
-    this.auth.appsInfoCheck(func);
+    this.data.appsInfoCheck(func);
   }
 }

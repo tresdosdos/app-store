@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { KEYBOARD } from '../../constants';
-import { GetDataService } from '../../services/get-data.service';
+import { GetDataService } from '../../app-dashboard/data-service/get-data.service';
 import { Router } from '@angular/router';
 
 @Component({

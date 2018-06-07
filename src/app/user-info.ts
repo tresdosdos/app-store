@@ -1,4 +1,4 @@
-import {User} from './user';
+import {User} from './mock-schemas/user';
 
 export const USERINFO: User = {
   username: '',

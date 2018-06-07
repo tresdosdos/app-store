@@ -6,10 +6,10 @@ import { HeaderModule } from './header/header.module';
 import { AppDashboardModule } from './app-dashboard/app-dashboard.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { CategoriesModule } from './categories/categories.module';
-import { ModalWindowComponent } from './modal-window/modal-window.component';
-import { SearchDashboardComponent } from './search-dashboard/search-dashboard.component';
-import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { CategoriesModule } from './app-dashboard/categories/categories.module';
+import { ModalWindowComponent } from './app-dashboard/modal-window/modal-window.component';
+import { SearchDashboardComponent } from './app-dashboard/search-dashboard/search-dashboard.component';
+import { AdminPanelComponent } from './app-dashboard/admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { App } from '../services/app';
+import { App } from '../../mock-schemas/app';
 import { ActivatedRoute } from '@angular/router';
-import { APPS } from '../services/apps';
-import {GetDataService} from '../services/get-data.service';
-import {TokenizingService} from '../services/tokenizing.service';
+import { AppsInfo } from '../../apps-info';
+import {GetDataService} from '../data-service/get-data.service';
+import {TokenizingService} from '../token-service/tokenizing.service';
 
 @Component({
   selector: 'app-modal-window',
@@ -12,7 +12,7 @@ import {TokenizingService} from '../services/tokenizing.service';
 })
 export class ModalWindowComponent implements OnInit {
   private id: string;
-  private apps = APPS;
+  private apps = AppsInfo;
   public app: App;
   public isReady: boolean;
   constructor(private route: ActivatedRoute,
@@ -26,9 +26,9 @@ export class ModalWindowComponent implements OnInit {
   ngOnInit() {
     this.isReady = false;
     this.token.tokenCheck();
-  if (!APPS.length) {
+  if (!AppsInfo.length) {
     this.data.fetchInfo().subscribe((res) => {
-      APPS.push(...res);
+      AppsInfo.push(...res);
     this.route.params.subscribe(params => {
       this.id = params['id'];
         this.app = this.getApp();
