@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TokenizingService } from '../token-service/tokenizing.service';
 
 @Component({
-  selector: 'app-categories',
+  selector: 'app-dashboard',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })

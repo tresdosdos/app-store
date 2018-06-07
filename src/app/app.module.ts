@@ -3,28 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderModule } from './header/header.module';
-import { AppDashboardModule } from './app-dashboard/app-dashboard.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { CategoriesModule } from './app-dashboard/categories/categories.module';
-import { ModalWindowComponent } from './app-dashboard/modal-window/modal-window.component';
-import { SearchDashboardComponent } from './app-dashboard/search-dashboard/search-dashboard.component';
-import { AdminPanelComponent } from './app-dashboard/admin-panel/admin-panel.component';
+import { AppDashboardModule } from './app-dashboard/app-dashboard.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ModalWindowComponent,
-    SearchDashboardComponent,
-    AdminPanelComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     HeaderModule,
-    AppDashboardModule,
     AppRoutingModule,
-    CategoriesModule
+    AppDashboardModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

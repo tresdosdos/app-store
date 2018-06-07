@@ -4,6 +4,7 @@ import { App } from '../../mock-schemas/app';
 import { AppsInfo } from '../../apps-info';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import {HttpServiceService} from '../../shared-services/http-service/http-service.service';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class GetDataService {
   fetchInfo(): Observable<App[]> {
-    return this.http.get<App[]>('./assets/info.json');
+    return this.HttpService.get('./assets/info.json');
   }
   filterData(category, info): App[] {
     if (category) {
@@ -56,6 +57,6 @@ export class GetDataService {
       func();
     }
   }
-  constructor(private http: HttpClient,
+  constructor(private HttpService: HttpServiceService,
               private router: Router) { }
 }

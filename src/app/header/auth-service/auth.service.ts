@@ -35,8 +35,5 @@ export class AuthService {
       return 'non-logged';
     }
   }
-  constructor(private http: HttpClient,
-              private router: Router,
-              private route: ActivatedRoute,
-              private data: GetDataService) { }
+  constructor() { }
 }

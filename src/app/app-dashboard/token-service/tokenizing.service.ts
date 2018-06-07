@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { USERINFO } from '../../user-info';
 import { Observable } from 'rxjs';
-import { User } from '../../mock-schemas/user';
-import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../header/auth-service/auth.service';
+import { HttpServiceService } from '../../shared-services/http-service/http-service.service';
+import { ACCESS_TOKEN_URL } from '../../constants';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +12,10 @@ export class TokenizingService {
   remoteTokenFetch(): void {
     const code = this.getCode();
     if (code.length === 32) {
-      fetch('/gettoken', {
-        method: 'post',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({code: code})
-      })
-        .then(res => res.json())
-        .then(res => {
-          this.saveLocalToken(res.access_token);
-          this.auth.setUserData({data: res.user});
-        });
+      this.HttpService.post('/gettoken', {code: code}).subscribe((res) => {
+        this.saveLocalToken(res.access_token);
+        this.auth.setUserData({data: res.user});
+      });
     }
   }
   deleteLocalToken(): void {
@@ -42,7 +36,7 @@ export class TokenizingService {
   }
   getUserData(token): Observable<any> {
     this.saveLocalToken(token);
-    return this.http.get<User>('https://api.instagram.com/v1/users/self/?access_token=' + token);
+    return this.HttpService.get(ACCESS_TOKEN_URL + token);
   }
   saveLocalToken(token): void {
     localStorage.setItem('appStoreToken', token);
@@ -57,6 +51,6 @@ export class TokenizingService {
       this.remoteTokenFetch();
     }
   }
-  constructor(private http: HttpClient,
-              private auth: AuthService) { }
+  constructor(private auth: AuthService,
+              private HttpService: HttpServiceService) { }
 }
