@@ -4,19 +4,22 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../../header/auth-service/auth.service';
 import { HttpServiceService } from '../../shared-services/http-service/http-service.service';
 import { ACCESS_TOKEN_URL } from '../../constants';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenizingService {
   remoteTokenFetch(): void {
-    const code = this.getCode();
-    if (code.length === 32) {
-      this.HttpService.post('/gettoken', {code: code}).subscribe((res) => {
-        this.saveLocalToken(res.access_token);
-        this.auth.setUserData({data: res.user});
-      });
-    }
+    this.getCode().subscribe(codeData => {
+      const code = codeData.code;
+      if (code) {
+        this.HttpService.post('/gettoken', {code: code}).subscribe((tokenData) => {
+          this.saveLocalToken(tokenData.access_token);
+          this.auth.setUserData({data: tokenData.user});
+        });
+      }
+    });
   }
   deleteLocalToken(): void {
     localStorage.removeItem('appStoreToken');
@@ -30,16 +33,14 @@ export class TokenizingService {
       this.auth.setUserData(userData);
     });
   }
-  getCode(): string {
-    const url = window.location.href;
-    console.log(url);
-    return url.slice(url.indexOf('code') + 5, url.length);
+  getCode(): Observable<Params> {
+    return this.route.queryParams;
   }
-  getUserData(token): Observable<any> {
+  getUserData(token: string): Observable<Response> {
     this.saveLocalToken(token);
     return this.HttpService.get(ACCESS_TOKEN_URL + token);
   }
-  saveLocalToken(token): void {
+  saveLocalToken(token: string): void {
     localStorage.setItem('appStoreToken', token);
   }
   getLocalToken(): string {
@@ -53,5 +54,6 @@ export class TokenizingService {
     }
   }
   constructor(private auth: AuthService,
-              private HttpService: HttpServiceService) { }
+              private HttpService: HttpServiceService,
+              private route: ActivatedRoute) { }
 }

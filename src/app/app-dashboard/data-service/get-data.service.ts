@@ -13,7 +13,7 @@ export class GetDataService {
   fetchInfo(): Observable<App[]> {
     return this.HttpService.get('./assets/info.json');
   }
-  filterData(category, info): App[] {
+  filterData(category: string, info): App[] {
     if (category) {
       switch (category) {
         case 'kids': {
@@ -38,7 +38,7 @@ export class GetDataService {
     }
   }
   // search by 2 fields in lowercase
-  findApps(searchLine): App[] {
+  findApps(searchLine: string): App[] {
     return AppsInfo.filter((app) => {
       return app.app_name.toLocaleLowerCase().indexOf(searchLine.toLocaleLowerCase()) + 1
         || app.publisher_name.toLocaleLowerCase().indexOf(searchLine.toLocaleLowerCase()) + 1;
