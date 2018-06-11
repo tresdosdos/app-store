@@ -1,0 +1,11 @@
+<div class="app__container_{{theme.color}}" (click)="toggleModal()">
+  <div class="app__container__hint" *ngIf="hint">{{hint}}</div>
+  <img src="../../../assets/{{app.logo}}" class='app__logo'/>
+  <h2 class="app__name">{{app.app_name}}</h2>
+  <h3 class="app__dev">{{app.publisher_name}}</h3>
+  <div class="app__last-row">
+    <h4 class="app__ratings">{{app.all_rating}}/5</h4>
+    <h4 class="app__verified" *ngIf="app.top_developer">Verified</h4>
+  </div>
+</div>
+

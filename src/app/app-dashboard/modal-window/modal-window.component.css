@@ -1,0 +1,16 @@
+.app__container_full{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.app__container_full h2,h3,h4,h5{
+  font-weight: 400;
+}
+
+.app__container_full img{
+  width: fit-content;
+}

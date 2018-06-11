@@ -1,0 +1,5 @@
+<main class="dashboard_{{theme.color}}">
+  <div *ngFor="let app of this.getInfo()" class="dashboard__app__container">
+    <app-app [app]="app"></app-app>
+  </div>
+</main>

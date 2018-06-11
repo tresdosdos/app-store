@@ -1,0 +1,12 @@
+<nav class="header__nav">
+  <ul>
+    <li><a routerLink="/">Main page</a></li>
+    <li *ngIf="theme.categories"><a routerLink="/categories">Categories</a></li>
+    <li (click)="auth.logIn()" *ngIf="!userInfo.username && theme.logIn">Log in</li>
+    <li *ngIf="userInfo.username && theme.logIn" class="user-panel__container" (click)="toggleMenu()">
+      {{userInfo.username}}
+      <app-user-menu *ngIf="isMenuOpen"></app-user-menu>
+    </li>
+  </ul>
+</nav>
+

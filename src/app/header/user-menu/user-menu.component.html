@@ -1,0 +1,6 @@
+<div class="user-panel">
+  <ul>
+    <li *ngIf="auth.checkRights() === 'admin'"><a routerLink="/admin/panel">Admin panel</a></li>
+    <li (click)="logOut()">Log out</li>
+  </ul>
+</div>

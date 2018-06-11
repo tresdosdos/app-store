@@ -1,0 +1,67 @@
+[
+{
+  "logo": "clash.png",
+  "content_rating": 10,
+  "app_name": "Clash of Clans",
+  "content_rating_info": "Multiplayer",
+  "requires_os": "4.0.3 and up",
+  "publisher_name": "Supercell",
+  "id": "clashofclans",
+  "downloads": "100,000,000 - 500,000,000",
+  "all_rating": 4.6,
+  "top_developer": true,
+  "price": "Free"
+},
+{
+  "logo": "angrybirds.jpg",
+"content_rating": 6,
+"app_name": "Angry birds",
+"content_rating_info": "Fantasy Violence",
+"requires_os": "4.0.3 and up",
+"publisher_name": "Supercell",
+"id": "angrybirds",
+"downloads": "100,000,000 - 500,000,000",
+"all_rating": 4.8,
+"top_developer": true,
+"price": "5$"
+},
+{
+  "logo": "fallout-shelter.png",
+  "content_rating": 18,
+  "app_name": "FallOut",
+  "content_rating_info": "Fantasy Violence",
+  "requires_os": "4.0.3 and up",
+  "publisher_name": "Bethesda",
+  "id": "fallout",
+  "downloads": "100,000,000 - 500,000,000",
+  "all_rating": 4.0,
+  "top_developer": false,
+  "price": "Free"
+},
+{
+  "logo": "jurassic.png",
+  "content_rating": 18,
+  "app_name": "Jurassic World",
+  "content_rating_info": "Fantasy Violence",
+  "requires_os": "4.0.3 and up",
+  "publisher_name": "Jurassic entertainment",
+  "id": "jurassic",
+  "downloads": "100,000,000 - 500,000,000",
+  "all_rating": 4.1,
+  "top_developer": false,
+  "price": "10$"
+},
+{
+  "logo": "plants.png",
+  "content_rating": 6,
+  "app_name": "Plants vs. Zombies",
+  "content_rating_info": "Fantasy Violence",
+  "requires_os": "4.0.3 and up",
+  "publisher_name": "Electronic Arts",
+  "id": "plantsvszombie",
+  "downloads": "100,000,000 - 350,000,000",
+  "all_rating": 4.4,
+  "top_developer": true,
+  "price": "Free"
+}
+]
