@@ -34,13 +34,13 @@ export class ModalWindowComponent implements OnInit {
       this.id = params['id'];
         this.app = this.getApp();
         this.isReady = true;
-    });
+    }).unsubscribe();
     });
   } else {
     this.route.params.subscribe(params => {
       this.id = params['id'];
       this.app = this.getApp();
       this.isReady = true;
-    });
+    }).unsubscribe();
   }
 }}

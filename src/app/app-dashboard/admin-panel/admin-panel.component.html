@@ -1,8 +1,8 @@
 <div class="admin-panel__container">
-  <img src="{{userInfo.logo}}">
+  <img src="{{userInfo?.logo}}">
   <div class="admin-panel__user-info__container">
-    <h1>Your name: {{userInfo.username}}</h1>
-    <h2>Your id: {{userInfo.id}}</h2>
+    <h1>Your name: {{userInfo?.username}}</h1>
+    <h2>Your id: {{userInfo?.id}}</h2>
   </div>
   <div class="admin-panel__buttons__container">
     <button class="admin-panel__button_{{toggling.toggleTheme}}" (click)="toggleThemeColor()">

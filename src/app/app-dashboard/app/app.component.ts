@@ -3,7 +3,7 @@ import { App } from '../../mock-schemas/app';
 import { Router } from '@angular/router';
 import { THEME } from '../../theme-info';
 import { AuthService } from '../../header/auth-service/auth.service';
-import { RIGHTS } from '../../constants';
+import { RIGHTS, STATIC_PATH } from '../../constants';
 
 @Component({
   selector: 'app-app',
@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   @Input() app: App;
   public theme = THEME;
   public hint: string;
+  public STATIC_PATH = STATIC_PATH;
   constructor(private router: Router,
               private auth: AuthService
               ) { }

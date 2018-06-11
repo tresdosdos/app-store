@@ -4,20 +4,19 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../../header/auth-service/auth.service';
 import { HttpServiceService } from '../../shared-services/http-service/http-service.service';
 import { ACCESS_TOKEN_URL, LOCALSTORAGE } from '../../constants';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { LoginData } from '../../mock-schemas/loginData';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenizingService {
+  private code: number;
   constructor(private auth: AuthService,
               private HttpService: HttpServiceService,
               private route: ActivatedRoute) { }
   remoteTokenFetch(): void {
-    this.getCode().subscribe(
-      (codeData: {code: number}) => {
-      const code = codeData.code;
+    const code = this.getCode();
       if (code) {
         this.HttpService.post('/gettoken', {code: code}).subscribe(
           (tokenData: {
@@ -28,7 +27,6 @@ export class TokenizingService {
           this.auth.setUserData(tokenData.user);
         });
       }
-    });
   }
   deleteLocalToken(): void {
     localStorage.removeItem(LOCALSTORAGE.AUTH_TOKEN);
@@ -46,8 +44,13 @@ export class TokenizingService {
       this.auth.setUserData(userData.data);
     });
   }
-  getCode(): Observable<Params> {
-    return this.route.queryParams;
+  getCode(): number {
+    if (!this.code) {
+      this.route.queryParams.subscribe(params => {
+        this.code = params.code;
+      }).unsubscribe();
+    }
+    return this.code;
   }
   getUserData(token: string): Observable<{data: LoginData, meta: {code: number}}> {
     this.saveLocalToken(token);

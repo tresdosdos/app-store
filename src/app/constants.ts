@@ -53,3 +53,9 @@ export const CATEGORIES = {
 export const enum LOCALSTORAGE {
   AUTH_TOKEN = 'appStoreToken'
 }
+
+export const STATIC_PATH = '../../assets/';
+
+export const IMAGES = {
+  LOGO: 'logo.png'
+};

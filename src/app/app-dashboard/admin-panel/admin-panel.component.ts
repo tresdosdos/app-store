@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { USERINFO } from '../../user-info';
 import { THEME } from '../../theme-info';
 import { Router } from '@angular/router';
-import {RIGHTS, THEMES, TOGGLE_BUTTONS} from '../../constants';
+import {RIGHTS, STATIC_PATH, THEMES, TOGGLE_BUTTONS} from '../../constants';
 
 @Component({
   selector: 'app-admin-panel',

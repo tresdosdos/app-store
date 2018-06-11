@@ -36,7 +36,7 @@ export class CategoriesComponent implements OnInit {
       this.route.params.subscribe(params => {
         this.category = params['category'];
         this.filteredArr = this.data.filterData(this.category, this.apps);
-      });
+      }).unsubscribe();
     };
     this.data.appsInfoCheck(func);
   }
