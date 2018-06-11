@@ -11,7 +11,6 @@
     <main>
       <div *ngIf="!category" class="categories__container_null">Choose your category</div>
       <div *ngFor="let app of filteredArr">
-        <span *ngIf="error">{{error}}</span>
         <app-app [app]="app"></app-app>
       </div>
     </main>

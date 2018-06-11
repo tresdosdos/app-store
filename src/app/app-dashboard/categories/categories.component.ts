@@ -36,13 +36,7 @@ export class CategoriesComponent implements OnInit {
     const func = () => {
       this.route.params.subscribe(params => {
         this.category = params['category'];
-        try {
-          this.filteredArr = this.data.filterData(this.category, this.apps);
-        } catch (e) {
-          if (e.message === 'input problems') {
-            this.error = e.message;
-          }
-        }
+        this.filteredArr = this.data.filterData(this.category, this.apps);
       });
     };
     this.data.appsInfoCheck(func);
