@@ -26,22 +26,20 @@ export class AdminPanelComponent implements OnInit {
     this.toggling.toggleTheme = THEME.color;
   }
   // TODO: slice on two functions
-  toggleButton(button: string): void {
-    if (button === 'categories') {
-      THEME.categories = !THEME.categories;
-      if (this.toggling.toggleCategories === TOGGLE_BUTTONS.OFF) {
-        this.toggling.toggleCategories = TOGGLE_BUTTONS.ON;
-      } else {
-        this.toggling.toggleCategories = TOGGLE_BUTTONS.OFF;
-      }
-    }
-    if (button === 'logIn') {
+  toggleLogIn(): void {
       THEME.logIn = !THEME.logIn;
       if (this.toggling.toggleLogIn === TOGGLE_BUTTONS.OFF) {
         this.toggling.toggleLogIn = TOGGLE_BUTTONS.ON;
       } else {
         this.toggling.toggleLogIn = TOGGLE_BUTTONS.OFF;
       }
+  }
+  toggleCategories(): void {
+    THEME.categories = !THEME.categories;
+    if (this.toggling.toggleCategories === TOGGLE_BUTTONS.OFF) {
+      this.toggling.toggleCategories = TOGGLE_BUTTONS.ON;
+    } else {
+      this.toggling.toggleCategories = TOGGLE_BUTTONS.OFF;
     }
   }
   ngOnInit() {
