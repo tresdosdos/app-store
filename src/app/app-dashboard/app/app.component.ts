@@ -3,6 +3,7 @@ import { App } from '../../mock-schemas/app';
 import { Router } from '@angular/router';
 import { THEME } from '../../theme-info';
 import { AuthService } from '../../header/auth-service/auth.service';
+import {RIGHTS} from '../../constants';
 
 @Component({
   selector: 'app-app',
@@ -17,7 +18,7 @@ export class AppComponent implements OnInit {
               private auth: AuthService
               ) { }
   toggleModal(): void {
-    if (this.auth.checkRights() !== 'non-logged') {
+    if (this.auth.checkRights() !== RIGHTS.NON_LOGGED) {
       this.router.navigate(['/app/' + this.app.id]);
     } else {
       this.hint = 'You are not logged to check this info';

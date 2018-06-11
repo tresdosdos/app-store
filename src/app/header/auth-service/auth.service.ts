@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CLIENT_ID, REDIRECT_URI } from '../../constants';
+import {ADMINS, CLIENT_ID, REDIRECT_URI, RIGHTS} from '../../constants';
 import { USERINFO } from '../../user-info';
 import { LoginData } from '../../mock-schemas/loginData';
 
@@ -15,21 +15,21 @@ export class AuthService {
     USERINFO.username = userData.username;
     USERINFO.logo = userData.profile_picture;
     USERINFO.id = parseInt(userData.id, 10);
-    if (USERINFO.id === 4165236905) {
-      USERINFO.rights = 'admin';
+    if (USERINFO.id === ADMINS.FIRST_ADMIN) {
+      USERINFO.rights = RIGHTS.ADMIN;
     } else {
-      USERINFO.rights = 'logged';
+      USERINFO.rights = RIGHTS.LOGGED;
     }
   }
   checkRights(): string {
     if (USERINFO.rights) {
-      if (USERINFO.rights === 'admin') {
-        return 'admin';
+      if (USERINFO.rights === RIGHTS.ADMIN) {
+        return RIGHTS.ADMIN;
       } else {
-        return 'logged';
+        return RIGHTS.LOGGED;
       }
     } else {
-      return 'non-logged';
+      return RIGHTS.NON_LOGGED;
     }
   }
   constructor() { }

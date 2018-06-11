@@ -4,6 +4,7 @@ import { AppsInfo } from '../../apps-info';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpServiceService } from '../../shared-services/http-service/http-service.service';
+import {CATEGORIES} from '../../constants';
 
 
 @Injectable({
@@ -16,19 +17,19 @@ export class GetDataService {
   filterData(category: string, info): App[] {
     if (category) {
       switch (category) {
-        case 'kids': {
+        case CATEGORIES.KIDS.ID: {
           return info.filter((app) => {
-            return app.content_rating === 6;
+            return app.content_rating === CATEGORIES.KIDS.PARAM;
           });
         }
-        case 'adults': {
+        case CATEGORIES.ADULTS.ID: {
           return info.filter((app) => {
-            return app.content_rating === 18;
+            return app.content_rating === CATEGORIES.ADULTS.PARAM;
           });
         }
-        case 'multiplayer': {
+        case CATEGORIES.MULTIPLAYER.ID: {
           return info.filter((app) => {
-            return app.content_rating_info === 'Multiplayer';
+            return app.content_rating_info === CATEGORIES.MULTIPLAYER.PARAM;
           });
         }
         default: {
@@ -39,7 +40,7 @@ export class GetDataService {
   }
   // search by 2 fields in lowercase
   findApps(searchLine: string): App[] {
-    return AppsInfo.filter((app) => {
+    return AppsInfo.filter((app: App) => {
       return app.app_name.toLocaleLowerCase().indexOf(searchLine.toLocaleLowerCase()) + 1
         || app.publisher_name.toLocaleLowerCase().indexOf(searchLine.toLocaleLowerCase()) + 1;
     });
@@ -48,8 +49,8 @@ export class GetDataService {
     return;
   }): void {
     if (!AppsInfo.length) {
-      this.fetchInfo().subscribe((res) => {
-        AppsInfo.push(...res);
+      this.fetchInfo().subscribe((apps: App[]) => {
+        AppsInfo.push(...apps);
         func();
       });
     } else {

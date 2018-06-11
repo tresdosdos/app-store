@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { USERINFO } from '../../user-info';
 import { THEME } from '../../theme-info';
 import { Router } from '@angular/router';
+import {RIGHTS, THEMES, TOGGLE_BUTTONS} from '../../constants';
 
 @Component({
   selector: 'app-admin-panel',
@@ -17,38 +18,39 @@ export class AdminPanelComponent implements OnInit {
   };
   constructor(private router: Router) { }
   toggleThemeColor(): void {
-    if (THEME.color === 'light') {
-      THEME.color = 'dark';
+    if (THEME.color === THEMES.LIGHT) {
+      THEME.color = THEMES.DARK;
     } else {
-      THEME.color = 'light';
+      THEME.color = THEMES.LIGHT;
     }
     this.toggling.toggleTheme = THEME.color;
   }
+  // TODO: slice on two functions
   toggleButton(button: string): void {
     if (button === 'categories') {
       THEME.categories = !THEME.categories;
-      if (this.toggling.toggleCategories === 'off') {
-        this.toggling.toggleCategories = 'on';
+      if (this.toggling.toggleCategories === TOGGLE_BUTTONS.OFF) {
+        this.toggling.toggleCategories = TOGGLE_BUTTONS.ON;
       } else {
-        this.toggling.toggleCategories = 'off';
+        this.toggling.toggleCategories = TOGGLE_BUTTONS.OFF;
       }
     }
     if (button === 'logIn') {
       THEME.logIn = !THEME.logIn;
-      if (this.toggling.toggleLogIn === 'off') {
-        this.toggling.toggleLogIn = 'on';
+      if (this.toggling.toggleLogIn === TOGGLE_BUTTONS.OFF) {
+        this.toggling.toggleLogIn = TOGGLE_BUTTONS.ON;
       } else {
-        this.toggling.toggleLogIn = 'off';
+        this.toggling.toggleLogIn = TOGGLE_BUTTONS.OFF;
       }
     }
   }
   ngOnInit() {
     this.toggling = {
-      toggleTheme: 'light',
-      toggleCategories: 'off',
-      toggleLogIn: 'off'
+      toggleTheme: THEMES.LIGHT,
+      toggleCategories: TOGGLE_BUTTONS.OFF,
+      toggleLogIn: TOGGLE_BUTTONS.OFF
     };
-    if (this.userInfo.rights !== 'admin') {
+    if (this.userInfo.rights !== RIGHTS.ADMIN) {
       this.router.navigate(['/']);
     }
   }

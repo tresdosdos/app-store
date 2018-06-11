@@ -3,7 +3,7 @@ import { USERINFO } from '../../user-info';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../header/auth-service/auth.service';
 import { HttpServiceService } from '../../shared-services/http-service/http-service.service';
-import { ACCESS_TOKEN_URL } from '../../constants';
+import {ACCESS_TOKEN_URL, LOCALSTORAGE} from '../../constants';
 import { ActivatedRoute, Params } from '@angular/router';
 import {LoginData} from '../../mock-schemas/loginData';
 
@@ -28,7 +28,7 @@ export class TokenizingService {
     });
   }
   deleteLocalToken(): void {
-    localStorage.removeItem('appStoreToken');
+    localStorage.removeItem(LOCALSTORAGE.AUTH_TOKEN);
     USERINFO.username = '';
     USERINFO.id = null;
     USERINFO.logo = '';
@@ -51,10 +51,10 @@ export class TokenizingService {
     return this.HttpService.get(ACCESS_TOKEN_URL + token);
   }
   saveLocalToken(token: string): void {
-    localStorage.setItem('appStoreToken', token);
+    localStorage.setItem(LOCALSTORAGE.AUTH_TOKEN, token);
   }
   getLocalToken(): string {
-    return localStorage.getItem('appStoreToken');
+    return localStorage.getItem(LOCALSTORAGE.AUTH_TOKEN);
   }
   tokenCheck(): void {
     if (this.getLocalToken()) {
