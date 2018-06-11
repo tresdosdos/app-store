@@ -26,7 +26,7 @@ export class ModalWindowComponent implements OnInit {
   ngOnInit() {
     this.isReady = false;
     this.token.tokenCheck();
-    // TODO: need to fix nesting and diplicating
+    // TODO: need to fix nesting and duplicating
   if (!AppsInfo.length) {
     this.data.fetchInfo().subscribe((apps: App[]) => {
       AppsInfo.push(...apps);

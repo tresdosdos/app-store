@@ -13,13 +13,15 @@ export class AuthService {
       `https://api.instagram.com/oauth/authorize/?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
   }
   setUserData(userData: LoginData): void {
-    USERINFO.username = userData.username;
-    USERINFO.logo = userData.profile_picture;
-    USERINFO.id = parseInt(userData.id, 10);
-    if (USERINFO.id === ADMINS.FIRST_ADMIN) {
-      USERINFO.rights = RIGHTS.ADMIN;
-    } else {
-      USERINFO.rights = RIGHTS.LOGGED;
+    if (userData) {
+      USERINFO.username = userData.username;
+      USERINFO.logo = userData.profile_picture;
+      USERINFO.id = parseInt(userData.id, 10);
+      if (USERINFO.id === ADMINS.FIRST_ADMIN) {
+        USERINFO.rights = RIGHTS.ADMIN;
+      } else {
+        USERINFO.rights = RIGHTS.LOGGED;
+      }
     }
   }
   checkRights(): string {
