@@ -7,7 +7,7 @@ import { USERINFO } from '../../user-info';
 })
 export class AuthService {
   logIn(): void {
-    window.location.href =
+    document.location.href =
       `https://api.instagram.com/oauth/authorize/?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
   }
   setUserData(userData): void {

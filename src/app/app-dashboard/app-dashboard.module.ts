@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app/app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
-import { CategoriesRoutingModule } from './categories-routing.module';
+import { CategoriesRoutingModule } from './categories/categories-routing.module';
 import { CategoriesComponent } from './categories/categories.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
