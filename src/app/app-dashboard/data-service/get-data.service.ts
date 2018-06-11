@@ -11,6 +11,8 @@ import {CATEGORIES} from '../../constants';
   providedIn: 'root'
 })
 export class GetDataService {
+  constructor(private HttpService: HttpServiceService,
+              private router: Router) { }
   fetchInfo(): Observable<App[]> {
     return this.HttpService.get('./assets/info.json');
   }
@@ -57,6 +59,4 @@ export class GetDataService {
       func();
     }
   }
-  constructor(private HttpService: HttpServiceService,
-              private router: Router) { }
 }

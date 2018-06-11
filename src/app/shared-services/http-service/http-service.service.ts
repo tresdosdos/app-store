@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpServiceService {
+  constructor(private http: HttpClient) { }
   get(url: string,
       myHeaders = [
         'Content-Type',
@@ -27,5 +28,4 @@ export class HttpServiceService {
     headers.set(myHeaders[0], myHeaders[1]);
     return this.http.post(url, data, {headers: headers});
   }
-  constructor(private http: HttpClient) { }
 }

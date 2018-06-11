@@ -3,14 +3,17 @@ import { USERINFO } from '../../user-info';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../header/auth-service/auth.service';
 import { HttpServiceService } from '../../shared-services/http-service/http-service.service';
-import {ACCESS_TOKEN_URL, LOCALSTORAGE} from '../../constants';
+import { ACCESS_TOKEN_URL, LOCALSTORAGE } from '../../constants';
 import { ActivatedRoute, Params } from '@angular/router';
-import {LoginData} from '../../mock-schemas/loginData';
+import { LoginData } from '../../mock-schemas/loginData';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenizingService {
+  constructor(private auth: AuthService,
+              private HttpService: HttpServiceService,
+              private route: ActivatedRoute) { }
   remoteTokenFetch(): void {
     this.getCode().subscribe(
       (codeData: {code: number}) => {
@@ -63,7 +66,4 @@ export class TokenizingService {
       this.remoteTokenFetch();
     }
   }
-  constructor(private auth: AuthService,
-              private HttpService: HttpServiceService,
-              private route: ActivatedRoute) { }
 }

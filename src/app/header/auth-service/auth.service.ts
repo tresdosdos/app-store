@@ -7,6 +7,7 @@ import { LoginData } from '../../mock-schemas/loginData';
   providedIn: 'root'
 })
 export class AuthService {
+  constructor() { }
   logIn(): void {
     document.location.href =
       `https://api.instagram.com/oauth/authorize/?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
@@ -32,5 +33,4 @@ export class AuthService {
       return RIGHTS.NON_LOGGED;
     }
   }
-  constructor() { }
 }
