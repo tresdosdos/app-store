@@ -13,12 +13,12 @@ import { LoginData } from '../../mock-schemas/loginData';
 export class TokenizingService {
   private code: number;
   constructor(private auth: AuthService,
-              private HttpService: HttpServiceService,
+              private http: HttpServiceService,
               private route: ActivatedRoute) { }
   remoteTokenFetch(): void {
     const code = this.getCode();
       if (code) {
-        this.HttpService.post('/gettoken', {code: code}).subscribe(
+        this.http.post('/gettoken', {code: code}).subscribe(
           (tokenData: {
             access_token: string,
             user: LoginData
@@ -54,7 +54,7 @@ export class TokenizingService {
   }
   getUserData(token: string): Observable<{data: LoginData, meta: {code: number}}> {
     this.saveLocalToken(token);
-    return this.HttpService.get(ACCESS_TOKEN_URL + token);
+    return this.http.get(ACCESS_TOKEN_URL + token);
   }
   saveLocalToken(token: string): void {
     localStorage.setItem(LOCALSTORAGE.AUTH_TOKEN, token);

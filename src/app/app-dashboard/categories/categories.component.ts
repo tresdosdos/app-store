@@ -18,8 +18,7 @@ export class CategoriesComponent implements OnInit {
   public menuIsOpen: boolean;
   constructor(private data: GetDataService,
               private route: ActivatedRoute,
-              private token: TokenizingService) {
-  }
+              private token: TokenizingService) { }
   toggleCategoriesMenu(): void {
     this.menuIsOpen = !this.menuIsOpen;
     if (this.menuIsOpen) {
@@ -35,8 +34,10 @@ export class CategoriesComponent implements OnInit {
     const func = () => {
       this.route.params.subscribe(params => {
         this.category = params['category'];
-        this.filteredArr = this.data.filterData(this.category, this.apps);
-      }).unsubscribe();
+        if (this.category) {
+          this.filteredArr = this.data.filterData(this.category, this.apps);
+          }
+      });
     };
     this.data.appsInfoCheck(func);
   }

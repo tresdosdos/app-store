@@ -4,20 +4,18 @@ import { AppsInfo } from '../../apps-info';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpServiceService } from '../../shared-services/http-service/http-service.service';
-import {CATEGORIES} from '../../constants';
-
+import { CATEGORIES } from '../../constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetDataService {
-  constructor(private HttpService: HttpServiceService,
+  constructor(private http: HttpServiceService,
               private router: Router) { }
   fetchInfo(): Observable<App[]> {
-    return this.HttpService.get('./assets/info.json');
+    return this.http.get('./assets/info.json');
   }
   filterData(category: string, info): App[] {
-    if (category) {
       switch (category) {
         case CATEGORIES.KIDS.ID: {
           return info.filter((app) => {
@@ -38,7 +36,6 @@ export class GetDataService {
           this.router.navigate(['/']);
         }
       }
-    }
   }
   // search by 2 fields in lowercase
   findApps(searchLine: string): App[] {
