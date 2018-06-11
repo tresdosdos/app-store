@@ -3,7 +3,7 @@ import { App } from '../../mock-schemas/app';
 import { Router } from '@angular/router';
 import { THEME } from '../../theme-info';
 import { AuthService } from '../../header/auth-service/auth.service';
-import {RIGHTS} from '../../constants';
+import { RIGHTS } from '../../constants';
 
 @Component({
   selector: 'app-app',

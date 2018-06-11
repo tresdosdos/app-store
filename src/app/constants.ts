@@ -13,10 +13,10 @@ export const ADMINS = {
   FIRST_ADMIN: 4165236905
 };
 
-export const enum RIGHTS {
-  ADMIN = 'admin',
-  LOGGED = 'logged',
-  NON_LOGGED = 'non-logged'
+export const RIGHTS = {
+  ADMIN: 'admin',
+  LOGGED: 'logged',
+  NON_LOGGED: 'non-logged'
 }
 
 

@@ -16,7 +16,6 @@ export class CategoriesComponent implements OnInit {
   public category: string;
   public symbol: string;
   public menuIsOpen: boolean;
-  public error: string;
   constructor(private data: GetDataService,
               private route: ActivatedRoute,
               private token: TokenizingService) {

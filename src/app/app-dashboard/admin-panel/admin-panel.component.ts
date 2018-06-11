@@ -25,7 +25,6 @@ export class AdminPanelComponent implements OnInit {
     }
     this.toggling.toggleTheme = THEME.color;
   }
-  // TODO: slice on two functions
   toggleLogIn(): void {
       THEME.logIn = !THEME.logIn;
       if (this.toggling.toggleLogIn === TOGGLE_BUTTONS.OFF) {

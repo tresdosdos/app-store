@@ -19,13 +19,14 @@ export class ModalWindowComponent implements OnInit {
               private data: GetDataService,
               private token: TokenizingService) { }
   getApp(): any {
-        return this.apps.filter((app: App) => {
+        return this.apps.find((app: App) => {
           return app.id === this.id;
-        })[0];
+        });
   }
   ngOnInit() {
     this.isReady = false;
     this.token.tokenCheck();
+    // TODO: need to fix nesting and diplicating
   if (!AppsInfo.length) {
     this.data.fetchInfo().subscribe((apps: App[]) => {
       AppsInfo.push(...apps);

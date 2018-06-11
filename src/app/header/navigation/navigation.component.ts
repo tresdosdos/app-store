@@ -11,7 +11,7 @@ import { THEME } from '../../theme-info';
 export class NavigationComponent implements OnInit {
   public userInfo = USERINFO;
   public theme = THEME;
-  isMenuOpen: boolean;
+  public isMenuOpen: boolean;
   constructor(public auth: AuthService) { }
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
