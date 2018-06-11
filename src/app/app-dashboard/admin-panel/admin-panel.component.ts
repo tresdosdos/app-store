@@ -24,7 +24,7 @@ export class AdminPanelComponent implements OnInit {
     }
     this.toggling.toggleTheme = THEME.color;
   }
-  toggleButton(button): void {
+  toggleButton(button: string): void {
     if (button === 'categories') {
       THEME.categories = !THEME.categories;
       if (this.toggling.toggleCategories === 'off') {

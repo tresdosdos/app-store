@@ -19,7 +19,7 @@ export class ModalWindowComponent implements OnInit {
               private data: GetDataService,
               private token: TokenizingService) { }
   getApp(): any {
-        return this.apps.filter((app) => {
+        return this.apps.filter((app: App) => {
           return app.id === this.id;
         })[0];
   }
@@ -27,8 +27,8 @@ export class ModalWindowComponent implements OnInit {
     this.isReady = false;
     this.token.tokenCheck();
   if (!AppsInfo.length) {
-    this.data.fetchInfo().subscribe((res) => {
-      AppsInfo.push(...res);
+    this.data.fetchInfo().subscribe((apps: App[]) => {
+      AppsInfo.push(...apps);
     this.route.params.subscribe(params => {
       this.id = params['id'];
         this.app = this.getApp();

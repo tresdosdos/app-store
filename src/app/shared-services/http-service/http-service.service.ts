@@ -6,7 +6,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
   providedIn: 'root'
 })
 export class HttpServiceService {
-  get(url,
+  get(url: string,
       myHeaders = [
         'Content-Type',
         'application/json'
@@ -16,7 +16,7 @@ export class HttpServiceService {
     headers.set(myHeaders[0], myHeaders[1]);
     return this.http.get(url, {headers: headers});
   }
-  post(url,
+  post(url: string,
        data = {},
        myHeaders = [
          'Content-Type',
