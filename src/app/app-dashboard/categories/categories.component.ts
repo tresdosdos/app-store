@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../data-service/get-data.service';
 import { App } from '../../mock-schemas/app';
-import { AppsInfo } from '../../apps-info';
 import { ActivatedRoute } from '@angular/router';
 import { TokenizingService } from '../token-service/tokenizing.service';
 
@@ -11,7 +10,7 @@ import { TokenizingService } from '../token-service/tokenizing.service';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
-  private apps = AppsInfo;
+  private apps: App[];
   public filteredArr: App[];
   public category: string;
   public symbol: string;
@@ -31,14 +30,23 @@ export class CategoriesComponent implements OnInit {
     this.menuIsOpen = false;
     this.symbol = '►';
     this.token.tokenCheck();
-    const func = () => {
+    // const func = () => {
+    //   this.route.params.subscribe(params => {
+    //     this.category = params['category'];
+    //     if (this.category) {
+    //       this.filteredArr = this.data.filterData(this.category, this.apps);
+    //       }
+    //   });
+    // };
+    // this.data.appsInfoCheck(func);
+    this.data.getData().subscribe((apps: App[]) => {
+      this.apps = apps;
       this.route.params.subscribe(params => {
-        this.category = params['category'];
-        if (this.category) {
-          this.filteredArr = this.data.filterData(this.category, this.apps);
-          }
-      });
-    };
-    this.data.appsInfoCheck(func);
+            this.category = params['category'];
+            if (this.category) {
+              this.filteredArr = this.data.filterData(this.category, this.apps);
+              }
+          });
+    });
   }
 }

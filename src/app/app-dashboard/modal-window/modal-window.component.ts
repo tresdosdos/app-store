@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { App } from '../../mock-schemas/app';
 import { ActivatedRoute } from '@angular/router';
-import { AppsInfo } from '../../apps-info';
-import {GetDataService} from '../data-service/get-data.service';
-import {TokenizingService} from '../token-service/tokenizing.service';
+import { GetDataService } from '../data-service/get-data.service';
+import { TokenizingService } from '../token-service/tokenizing.service';
 
 @Component({
   selector: 'app-modal-window',
@@ -12,9 +11,8 @@ import {TokenizingService} from '../token-service/tokenizing.service';
 })
 export class ModalWindowComponent implements OnInit {
   private id: string;
-  private apps = AppsInfo;
+  private apps: App[];
   public app: App;
-  public isReady: boolean;
   constructor(private route: ActivatedRoute,
               private data: GetDataService,
               private token: TokenizingService) { }
@@ -24,23 +22,13 @@ export class ModalWindowComponent implements OnInit {
         });
   }
   ngOnInit() {
-    this.isReady = false;
     this.token.tokenCheck();
-    // TODO: need to fix nesting and duplicating
-  if (!AppsInfo.length) {
-    this.data.fetchInfo().subscribe((apps: App[]) => {
-      AppsInfo.push(...apps);
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
-        this.app = this.getApp();
-        this.isReady = true;
-    }).unsubscribe();
+    // TODO: flatMap
+    this.data.getData().subscribe((apps: App[]) => {
+      this.apps = apps;
+      this.route.params.subscribe(params => {
+            this.id = params['id'];
+              this.app = this.getApp();
+          }).unsubscribe();
     });
-  } else {
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
-      this.app = this.getApp();
-      this.isReady = true;
-    }).unsubscribe();
-  }
 }}

@@ -12,26 +12,25 @@ import { Subscription } from 'rxjs';
 export class SearchDashboardComponent implements OnInit, OnDestroy {
   private id: string;
   private subscription: Subscription;
-  public app: App[];
-  public isReady: boolean;
+  private apps: App[];
+  public foundedApps: App[];
   public error: string;
   constructor(private route: ActivatedRoute,
               private data: GetDataService) { }
   ngOnInit() {
-    this.isReady = false;
-    const func = () => {
-      this.subscription = this.route.params.subscribe(params => {
-        this.id = params['id'];
-        this.app = this.data.findApps(this.id);
-        if (this.app.length === 0) {
-          this.error = 'There is no matches';
-        } else {
-          this.error = '';
-        }
-        this.isReady = true;
-      });
-    };
-    this.data.appsInfoCheck(func);
+    // TODO: flatMap
+    this.data.getData().subscribe((apps: App[]) => {
+      this.apps = apps;
+        this.subscription = this.route.params.subscribe(params => {
+          this.id = params['id'];
+          this.foundedApps = this.data.findApps(this.apps, this.id);
+          if (this.apps.length === 0) {
+            this.error = 'There is no matches';
+          } else {
+            this.error = '';
+          }
+        });
+    });
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
