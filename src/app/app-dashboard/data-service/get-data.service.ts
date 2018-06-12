@@ -8,6 +8,7 @@ import { CATEGORIES } from '../../constants';
 @Injectable({
   providedIn: 'root'
 })
+// TODO: add permission categories to methods
 export class GetDataService {
   private apps = new BehaviorSubject([]);
   public appData = this.apps.asObservable();

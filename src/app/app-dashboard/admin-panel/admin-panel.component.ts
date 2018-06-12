@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { USERINFO } from '../../user-info';
 import { THEME } from '../../theme-info';
 import { Router } from '@angular/router';
-import {RIGHTS, STATIC_PATH, THEMES, TOGGLE_BUTTONS} from '../../constants';
+import { RIGHTS, THEMES, TOGGLE_BUTTONS } from '../../constants';
+import {UserDataService} from '../../shared-services/user-data/user-data.service';
+import {User} from '../../mock-schemas/user';
 
 @Component({
   selector: 'app-admin-panel',
@@ -10,13 +11,14 @@ import {RIGHTS, STATIC_PATH, THEMES, TOGGLE_BUTTONS} from '../../constants';
   styleUrls: ['./admin-panel.component.css']
 })
 export class AdminPanelComponent implements OnInit {
-  public userInfo = USERINFO;
+  public userInfo: User;
   public toggling: {
     toggleCategories: string;
     toggleLogIn: string;
     toggleTheme: string;
   };
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private user: UserDataService) { }
   toggleThemeColor(): void {
     if (THEME.color === THEMES.LIGHT) {
       THEME.color = THEMES.DARK;
@@ -47,8 +49,11 @@ export class AdminPanelComponent implements OnInit {
       toggleCategories: TOGGLE_BUTTONS.OFF,
       toggleLogIn: TOGGLE_BUTTONS.OFF
     };
-    if (this.userInfo.rights !== RIGHTS.ADMIN) {
-      this.router.navigate(['/']);
-    }
+    this.user.getUserObservableData().subscribe((userData: User) => {
+      this.userInfo = userData;
+      if (this.userInfo.rights !== RIGHTS.ADMIN) {
+        this.router.navigate(['/']);
+      }
+    }).unsubscribe();
   }
 }

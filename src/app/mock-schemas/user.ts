@@ -1,6 +1,6 @@
 export class User {
-  logo: string;
   username: string;
+  logo: string;
   id: number;
   rights: string;
 }

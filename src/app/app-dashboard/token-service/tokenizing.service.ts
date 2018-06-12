@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { USERINFO } from '../../user-info';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../header/auth-service/auth.service';
 import { HttpServiceService } from '../../shared-services/http-service/http-service.service';
 import { ACCESS_TOKEN_URL, LOCALSTORAGE } from '../../constants';
 import { ActivatedRoute } from '@angular/router';
 import { LoginData } from '../../mock-schemas/loginData';
+import {UserDataService} from '../../shared-services/user-data/user-data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,8 @@ export class TokenizingService {
   private code: number;
   constructor(private auth: AuthService,
               private http: HttpServiceService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private user: UserDataService) { }
   remoteTokenFetch(): void {
     const code = this.getCode();
       if (code) {
@@ -30,9 +31,7 @@ export class TokenizingService {
   }
   deleteLocalToken(): void {
     localStorage.removeItem(LOCALSTORAGE.AUTH_TOKEN);
-    USERINFO.username = '';
-    USERINFO.id = null;
-    USERINFO.logo = '';
+    this.user.setNullData();
   }
   localTokenFetch(): void {
     const token = this.getLocalToken();

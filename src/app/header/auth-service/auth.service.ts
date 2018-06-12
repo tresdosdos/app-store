@@ -1,32 +1,32 @@
 import { Injectable } from '@angular/core';
-import {ADMINS, CLIENT_ID, REDIRECT_URI, RIGHTS} from '../../constants';
-import { USERINFO } from '../../user-info';
+import { ADMINS, CLIENT_ID, REDIRECT_URI, RIGHTS } from '../../constants';
 import { LoginData } from '../../mock-schemas/loginData';
+import { UserDataService } from '../../shared-services/user-data/user-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor() { }
+  constructor(private user: UserDataService) { }
   logIn(): void {
     document.location.href =
       `https://api.instagram.com/oauth/authorize/?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
   }
-  setUserData(userData: LoginData): void {
-    if (userData) {
-      USERINFO.username = userData.username;
-      USERINFO.logo = userData.profile_picture;
-      USERINFO.id = parseInt(userData.id, 10);
-      if (USERINFO.id === ADMINS.FIRST_ADMIN) {
-        USERINFO.rights = RIGHTS.ADMIN;
-      } else {
-        USERINFO.rights = RIGHTS.LOGGED;
-      }
-    }
+  setUserData(loginData: LoginData): void {
+      const userId = parseInt(loginData.id, 10);
+      const userData = {
+        username: loginData.username,
+        logo: loginData.profile_picture,
+        id: userId,
+        // Here i can use loop for admin check, but not need in this moment
+        rights: userId === ADMINS.FIRST_ADMIN ? RIGHTS.ADMIN : RIGHTS.LOGGED
+      };
+      this.user.setUserData(userData);
   }
   checkRights(): string {
-    if (USERINFO.rights) {
-      if (USERINFO.rights === RIGHTS.ADMIN) {
+    const userData = this.user.getUserData();
+    if (userData.rights) {
+      if (userData.rights === RIGHTS.ADMIN) {
         return RIGHTS.ADMIN;
       } else {
         return RIGHTS.LOGGED;
