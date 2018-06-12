@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { KEYBOARD } from '../../constants';
+import { KEYBOARD } from '../../shared/constants';
 import { GetDataService } from '../../app-dashboard/data-service/get-data.service';
 import { Router } from '@angular/router';
 

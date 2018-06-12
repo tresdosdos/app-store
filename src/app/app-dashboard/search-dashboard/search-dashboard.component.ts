@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { App } from '../../mock-schemas/app';
+import { App } from '../../shared/mock-schemas/app';
 import { GetDataService } from '../data-service/get-data.service';
 import { ActivatedRoute } from '@angular/router';
-import { ISubscriptions } from '../../interfaces';
+import { ISubscriptions } from '../../shared/interfaces';
 import {TokenizingService} from '../token-service/tokenizing.service';
 
 @Component({

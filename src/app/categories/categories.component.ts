@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { GetDataService } from '../data-service/get-data.service';
-import { App } from '../../mock-schemas/app';
+import { GetDataService } from '../app-dashboard/data-service/get-data.service';
+import { App } from '../shared/mock-schemas/app';
 import { ActivatedRoute } from '@angular/router';
-import { TokenizingService } from '../token-service/tokenizing.service';
-import { ICONS } from '../../constants';
-import { ISubscriptions } from '../../interfaces';
+import { TokenizingService } from '../app-dashboard/token-service/tokenizing.service';
+import { ICONS } from '../shared/constants';
+import { ISubscriptions } from '../shared/interfaces';
 
 @Component({
   selector: 'app-dashboard',

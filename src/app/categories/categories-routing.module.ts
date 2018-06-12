@@ -4,6 +4,7 @@ import { CategoriesComponent } from './categories.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const categoriesRoutes: Routes = [
+  { path: 'categories', component: CategoriesComponent, pathMatch: 'prefix' },
   { path: 'categories/:category', component: CategoriesComponent}
 ];
 

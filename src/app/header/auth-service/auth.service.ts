@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ADMINS, CLIENT_ID, REDIRECT_URI, RIGHTS } from '../../constants';
-import { LoginData } from '../../mock-schemas/loginData';
-import { UserDataService } from '../../shared-services/user-data/user-data.service';
+import { ADMINS, CLIENT_ID, REDIRECT_URI, RIGHTS } from '../../shared/constants';
+import { LoginData } from '../../shared/mock-schemas/loginData';
+import { UserDataService } from '../../shared/user-data/user-data.service';
 
 @Injectable({
   providedIn: 'root'

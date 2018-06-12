@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { STATIC_PATH, IMAGES } from '../constants';
-import { Theme } from '../mock-schemas/theme';
-import { ThemeDataService } from '../shared-services/theme-data/theme-data.service';
-import { ISubscriptions } from '../interfaces';
+import { STATIC_PATH, IMAGES } from '../shared/constants';
+import { Theme } from '../shared/mock-schemas/theme';
+import { ThemeDataService } from '../shared/theme-data/theme-data.service';
+import { ISubscriptions } from '../shared/interfaces';
 
 @Component({
   selector: 'app-header',

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RIGHTS, THEMES, TOGGLE_BUTTONS } from '../../constants';
-import { UserDataService } from '../../shared-services/user-data/user-data.service';
-import { User } from '../../mock-schemas/user';
-import { ThemeDataService } from '../../shared-services/theme-data/theme-data.service';
-import { IToggleButtons } from '../../interfaces';
+import { RIGHTS, THEMES, TOGGLE_BUTTONS } from '../../shared/constants';
+import { UserDataService } from '../../shared/user-data/user-data.service';
+import { User } from '../../shared/mock-schemas/user';
+import { ThemeDataService } from '../../shared/theme-data/theme-data.service';
+import { IToggleButtons } from '../../shared/interfaces';
 
 @Component({
   selector: 'app-admin-panel',
@@ -47,6 +47,7 @@ export class AdminPanelComponent implements OnInit {
       (this.toggling.categories = TOGGLE_BUTTONS.ON) :
       (this.toggling.categories = TOGGLE_BUTTONS.OFF);
   }
+  // TODO: guard navigate
   ngOnInit() {
     this.user.getUserObservableData().subscribe((userData: User) => {
       this.userInfo = userData;

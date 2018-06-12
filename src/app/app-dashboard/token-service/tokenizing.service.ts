@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../header/auth-service/auth.service';
-import { HttpServiceService } from '../../shared-services/http-service/http-service.service';
-import { ACCESS_TOKEN_URL, LOCALSTORAGE } from '../../constants';
+import { HttpServiceService } from '../../shared/http-service/http-service.service';
+import { ACCESS_TOKEN_URL, LOCALSTORAGE } from '../../shared/constants';
 import { ActivatedRoute } from '@angular/router';
-import { LoginData } from '../../mock-schemas/loginData';
-import {UserDataService} from '../../shared-services/user-data/user-data.service';
+import { LoginData } from '../../shared/mock-schemas/loginData';
+import {UserDataService} from '../../shared/user-data/user-data.service';
 
 @Injectable({
   providedIn: 'root'

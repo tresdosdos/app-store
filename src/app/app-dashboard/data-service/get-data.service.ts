@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { App } from '../../mock-schemas/app';
+import { App } from '../../shared/mock-schemas/app';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { HttpServiceService } from '../../shared-services/http-service/http-service.service';
-import { CATEGORIES } from '../../constants';
+import { HttpServiceService } from '../../shared/http-service/http-service.service';
+import { CATEGORIES } from '../../shared/constants';
 
 @Injectable({
   providedIn: 'root'

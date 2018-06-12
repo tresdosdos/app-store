@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth-service/auth.service';
-import { UserDataService } from '../../shared-services/user-data/user-data.service';
-import { User } from '../../mock-schemas/user';
-import { Theme } from '../../mock-schemas/theme';
-import {ThemeDataService} from '../../shared-services/theme-data/theme-data.service';
+import { UserDataService } from '../../shared/user-data/user-data.service';
+import { User } from '../../shared/mock-schemas/user';
+import { Theme } from '../../shared/mock-schemas/theme';
+import {ThemeDataService} from '../../shared/theme-data/theme-data.service';
 import {Subscription} from 'rxjs';
-import {ISubscriptions} from '../../interfaces';
+import {ISubscriptions} from '../../shared/interfaces';
 
 @Component({
   selector: 'app-navigation',

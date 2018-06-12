@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from '../../mock-schemas/user';
+import { User } from '../mock-schemas/user';
 
 @Injectable({
   providedIn: 'root'

@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { App } from '../../mock-schemas/app';
+import { App } from '../../shared/mock-schemas/app';
 import { ActivatedRoute } from '@angular/router';
 import { GetDataService } from '../data-service/get-data.service';
 import { TokenizingService } from '../token-service/tokenizing.service';
-import { ISubscriptions } from '../../interfaces';
+import { ISubscriptions } from '../../shared/interfaces';
 
 @Component({
   selector: 'app-modal-window',
