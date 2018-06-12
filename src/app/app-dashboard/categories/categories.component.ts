@@ -1,17 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GetDataService } from '../data-service/get-data.service';
 import { App } from '../../mock-schemas/app';
 import { ActivatedRoute } from '@angular/router';
 import { TokenizingService } from '../token-service/tokenizing.service';
-import {ICONS} from '../../constants';
+import { ICONS } from '../../constants';
+import { ISubscriptions } from '../../interfaces';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
-export class CategoriesComponent implements OnInit {
+export class CategoriesComponent implements OnInit, OnDestroy {
   private apps: App[];
+  private subscriptions: ISubscriptions = {
+    first: null,
+    second: null
+  };
   public filteredArr: App[];
   public category: string;
   public symbol: string;
@@ -32,14 +37,18 @@ export class CategoriesComponent implements OnInit {
   }
   ngOnInit() {
     this.token.tokenCheck();
-    this.data.getData().subscribe((apps: App[]) => {
+    this.subscriptions.first = this.data.getData().subscribe((apps: App[]) => {
       this.apps = apps;
-      this.route.params.subscribe(params => {
+      this.subscriptions.second = this.route.params.subscribe(params => {
             this.category = params['category'];
             if (this.category) {
               this.filteredArr = this.data.filterData(this.category, this.apps);
               }
           });
     });
+  }
+  ngOnDestroy() {
+    this.subscriptions.first.unsubscribe();
+    this.subscriptions.second.unsubscribe();
   }
 }

@@ -2,7 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { App } from '../../mock-schemas/app';
 import { GetDataService } from '../data-service/get-data.service';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ISubscriptions } from '../../interfaces';
+import {TokenizingService} from '../token-service/tokenizing.service';
 
 @Component({
   selector: 'app-search-dashboard',
@@ -11,20 +12,24 @@ import { Subscription } from 'rxjs';
 })
 export class SearchDashboardComponent implements OnInit, OnDestroy {
   private id: string;
-  private subscription: Subscription;
+  private subscriptions: ISubscriptions = {
+    first: null
+  };
   private apps: App[];
   public foundedApps: App[];
   public error: string;
   constructor(private route: ActivatedRoute,
-              private data: GetDataService) { }
+              private data: GetDataService,
+              private token: TokenizingService) { }
   ngOnInit() {
     // TODO: flatMap
+    this.token.tokenCheck();
     this.data.getData().subscribe((apps: App[]) => {
       this.apps = apps;
-        this.subscription = this.route.params.subscribe(params => {
+        this.subscriptions.first = this.route.params.subscribe(params => {
           this.id = params['id'];
           this.foundedApps = this.data.findApps(this.apps, this.id);
-          if (this.apps.length === 0) {
+          if (this.foundedApps.length === 0) {
             this.error = 'There is no matches';
           } else {
             this.error = '';
@@ -33,6 +38,6 @@ export class SearchDashboardComponent implements OnInit, OnDestroy {
     });
   }
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptions.first.unsubscribe();
   }
 }

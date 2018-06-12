@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { STATIC_PATH, IMAGES } from '../constants';
 import { Theme } from '../mock-schemas/theme';
 import { ThemeDataService } from '../shared-services/theme-data/theme-data.service';
-import { Subscription } from 'rxjs';
+import { ISubscriptions } from '../interfaces';
 
 @Component({
   selector: 'app-header',
@@ -10,17 +10,19 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  private subscription: Subscription;
+  private subscriptions: ISubscriptions = {
+    first: null
+  };
   public themeData: Theme;
   public logoUrl = STATIC_PATH + IMAGES.LOGO;
   constructor(private theme: ThemeDataService) { }
 
   ngOnInit() {
-    this.subscription = this.theme.getThemeObservableData().subscribe((themeData: Theme) => {
+    this.subscriptions.first = this.theme.getThemeObservableData().subscribe((themeData: Theme) => {
       this.themeData = themeData;
     });
   }
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptions.first.unsubscribe();
   }
 }

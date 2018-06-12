@@ -5,6 +5,7 @@ import { User } from '../../mock-schemas/user';
 import { Theme } from '../../mock-schemas/theme';
 import {ThemeDataService} from '../../shared-services/theme-data/theme-data.service';
 import {Subscription} from 'rxjs';
+import {ISubscriptions} from '../../interfaces';
 
 @Component({
   selector: 'app-navigation',
@@ -12,8 +13,10 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit, OnDestroy {
-  private firstSubscription: Subscription;
-  private secondSubscription: Subscription;
+  private  subscriptions: ISubscriptions = {
+    first: null,
+    second: null
+  };
   public userData: User;
   public themeData: Theme;
   public isMenuOpen: boolean;
@@ -26,15 +29,15 @@ export class NavigationComponent implements OnInit, OnDestroy {
     this.isMenuOpen = !this.isMenuOpen;
   }
   ngOnInit() {
-    this.firstSubscription = this.user.getUserObservableData().subscribe((userData: User) => {
+    this.subscriptions.first = this.user.getUserObservableData().subscribe((userData: User) => {
       this.userData = userData;
     });
-    this.secondSubscription = this.theme.getThemeObservableData().subscribe((themeData: Theme) => {
+    this.subscriptions.second = this.theme.getThemeObservableData().subscribe((themeData: Theme) => {
       this.themeData = themeData;
     });
   }
   ngOnDestroy() {
-    this.firstSubscription.unsubscribe();
-    this.secondSubscription.unsubscribe();
+    this.subscriptions.first.unsubscribe();
+    this.subscriptions.second.unsubscribe();
   }
 }

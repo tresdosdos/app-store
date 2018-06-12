@@ -10,6 +10,8 @@ import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { SearchDashboardComponent } from './search-dashboard/search-dashboard.component';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 
+
+
 @NgModule({
   imports: [
     CommonModule,

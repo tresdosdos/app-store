@@ -29,7 +29,6 @@ export class AdminPanelComponent implements OnInit {
       (currentTheme.color = THEMES.DARK) :
       (currentTheme.color = THEMES.LIGHT);
     this.theme.setThemeData(currentTheme);
-    console.log(currentTheme);
     this.toggling.theme = currentTheme.color;
   }
   toggleLogIn(): void {
@@ -54,6 +53,6 @@ export class AdminPanelComponent implements OnInit {
       if (this.userInfo.rights !== RIGHTS.ADMIN) {
         this.router.navigate(['/']);
       }
-    });
+    }).unsubscribe();
   }
 }
