@@ -1,4 +1,4 @@
-export interface ToggleButtons {
+export interface IToggleButtons {
   categories: string;
   logIn: string;
   theme: string;

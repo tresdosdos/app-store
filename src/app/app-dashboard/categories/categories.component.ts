@@ -3,6 +3,7 @@ import { GetDataService } from '../data-service/get-data.service';
 import { App } from '../../mock-schemas/app';
 import { ActivatedRoute } from '@angular/router';
 import { TokenizingService } from '../token-service/tokenizing.service';
+import {ICONS} from '../../constants';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,18 +18,19 @@ export class CategoriesComponent implements OnInit {
   public menuIsOpen: boolean;
   constructor(private data: GetDataService,
               private route: ActivatedRoute,
-              private token: TokenizingService) { }
+              private token: TokenizingService) {
+    this.menuIsOpen = false;
+    this.symbol = ICONS.ARROW_RIGHT;
+  }
   toggleCategoriesMenu(): void {
     this.menuIsOpen = !this.menuIsOpen;
     if (this.menuIsOpen) {
-      this.symbol = 'arrow-left';
+      this.symbol = ICONS.ARRROW_LEFT;
     } else {
-      this.symbol = 'arrow-right';
+      this.symbol = ICONS.ARROW_RIGHT;
     }
   }
   ngOnInit() {
-    this.menuIsOpen = false;
-    this.symbol = 'arrow-right';
     this.token.tokenCheck();
     this.data.getData().subscribe((apps: App[]) => {
       this.apps = apps;

@@ -25,10 +25,6 @@ export const enum THEMES  {
   LIGHT = 'light'
 }
 
-export const ADMIN_PANEL_BUTTONS = {
-  CATEGORIES: 'categories',
-  LOGIN: 'logIn'
-};
 
 export const enum TOGGLE_BUTTONS {
   ON = 'on',
@@ -59,3 +55,8 @@ export const STATIC_PATH = '../../assets/';
 export const IMAGES = {
   LOGO: 'logo.png'
 };
+
+export const enum ICONS {
+  ARRROW_LEFT = 'arrow-left',
+  ARROW_RIGHT = 'arrow-right'
+}
