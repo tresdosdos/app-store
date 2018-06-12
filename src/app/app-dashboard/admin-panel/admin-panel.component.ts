@@ -4,6 +4,7 @@ import { RIGHTS, THEMES, TOGGLE_BUTTONS } from '../../constants';
 import { UserDataService } from '../../shared-services/user-data/user-data.service';
 import { User } from '../../mock-schemas/user';
 import { ThemeDataService } from '../../shared-services/theme-data/theme-data.service';
+import { ToggleButtons } from '../../interfaces';
 
 @Component({
   selector: 'app-admin-panel',
@@ -12,11 +13,7 @@ import { ThemeDataService } from '../../shared-services/theme-data/theme-data.se
 })
 export class AdminPanelComponent implements OnInit {
   public userInfo: User;
-  public toggling: {
-    toggleCategories: string;
-    toggleLogIn: string;
-    toggleTheme: string;
-  };
+  public toggling: ToggleButtons;
   constructor(private router: Router,
               private user: UserDataService,
               private theme: ThemeDataService) { }
@@ -30,33 +27,33 @@ export class AdminPanelComponent implements OnInit {
     }
     this.theme.setThemeData(currentTheme);
     console.log(currentTheme);
-    this.toggling.toggleTheme = currentTheme.color;
+    this.toggling.theme = currentTheme.color;
   }
   toggleLogIn(): void {
     const currentTheme = this.theme.getThemeData();
     currentTheme.logIn = !currentTheme.logIn;
     this.theme.setThemeData(currentTheme);
-      if (this.toggling.toggleLogIn === TOGGLE_BUTTONS.OFF) {
-        this.toggling.toggleLogIn = TOGGLE_BUTTONS.ON;
+      if (this.toggling.logIn === TOGGLE_BUTTONS.OFF) {
+        this.toggling.logIn = TOGGLE_BUTTONS.ON;
       } else {
-        this.toggling.toggleLogIn = TOGGLE_BUTTONS.OFF;
+        this.toggling.logIn = TOGGLE_BUTTONS.OFF;
       }
   }
   toggleCategories(): void {
     const currentTheme = this.theme.getThemeData();
     currentTheme.categories = !currentTheme.categories;
     this.theme.setThemeData(currentTheme);
-    if (this.toggling.toggleCategories === TOGGLE_BUTTONS.OFF) {
-      this.toggling.toggleCategories = TOGGLE_BUTTONS.ON;
+    if (this.toggling.categories === TOGGLE_BUTTONS.OFF) {
+      this.toggling.categories = TOGGLE_BUTTONS.ON;
     } else {
-      this.toggling.toggleCategories = TOGGLE_BUTTONS.OFF;
+      this.toggling.categories = TOGGLE_BUTTONS.OFF;
     }
   }
   ngOnInit() {
     this.toggling = {
-      toggleTheme: THEMES.LIGHT,
-      toggleCategories: TOGGLE_BUTTONS.OFF,
-      toggleLogIn: TOGGLE_BUTTONS.OFF
+      theme: THEMES.LIGHT,
+      categories: TOGGLE_BUTTONS.OFF,
+      logIn: TOGGLE_BUTTONS.OFF
     };
     this.user.getUserObservableData().subscribe((userData: User) => {
       this.userInfo = userData;

@@ -13,6 +13,7 @@ export class AuthService {
       `https://api.instagram.com/oauth/authorize/?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
   }
   setUserData(loginData: LoginData): void {
+    if (loginData) {
       const userId = parseInt(loginData.id, 10);
       const userData = {
         username: loginData.username,
@@ -22,6 +23,7 @@ export class AuthService {
         rights: userId === ADMINS.FIRST_ADMIN ? RIGHTS.ADMIN : RIGHTS.LOGGED
       };
       this.user.setUserData(userData);
+    }
   }
   checkRights(): string {
     const userData = this.user.getUserData();

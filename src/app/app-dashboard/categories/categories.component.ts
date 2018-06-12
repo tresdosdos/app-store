@@ -21,24 +21,15 @@ export class CategoriesComponent implements OnInit {
   toggleCategoriesMenu(): void {
     this.menuIsOpen = !this.menuIsOpen;
     if (this.menuIsOpen) {
-      this.symbol = '◄';
+      this.symbol = 'arrow-left';
     } else {
-      this.symbol = '►';
+      this.symbol = 'arrow-right';
     }
   }
   ngOnInit() {
     this.menuIsOpen = false;
-    this.symbol = '►';
+    this.symbol = 'arrow-right';
     this.token.tokenCheck();
-    // const func = () => {
-    //   this.route.params.subscribe(params => {
-    //     this.category = params['category'];
-    //     if (this.category) {
-    //       this.filteredArr = this.data.filterData(this.category, this.apps);
-    //       }
-    //   });
-    // };
-    // this.data.appsInfoCheck(func);
     this.data.getData().subscribe((apps: App[]) => {
       this.apps = apps;
       this.route.params.subscribe(params => {

@@ -8,12 +8,14 @@ import { CategoriesComponent } from './categories/categories.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { SearchDashboardComponent } from './search-dashboard/search-dashboard.component';
+import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    CategoriesRoutingModule
+    CategoriesRoutingModule,
+    Angular2FontawesomeModule
   ],
   declarations: [AppComponent, DashboardComponent, CategoriesComponent, AdminPanelComponent, ModalWindowComponent, SearchDashboardComponent]
 })

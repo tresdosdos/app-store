@@ -1,7 +1,7 @@
 <div class="categories">
   <div class="categories__panel">
     <div class="categories__add__panel__container">
-      <button (click)="toggleCategoriesMenu()" class="categories__button">Choose any category {{symbol}}</button>
+      <button (click)="toggleCategoriesMenu()" class="categories__button">Choose any category <fa [name]='symbol'></fa></button>
       <div class="categories__add__panel" *ngIf="menuIsOpen">
         <a routerLink="/categories/kids">For kids</a>
         <a routerLink="/categories/adults">For adults</a>

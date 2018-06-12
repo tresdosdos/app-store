@@ -5,17 +5,14 @@
     <h2>Your id: {{userInfo?.id}}</h2>
   </div>
   <div class="admin-panel__buttons__container">
-    <button class="admin-panel__button_{{toggling.toggleTheme}}" (click)="toggleThemeColor()">
-      {{toggling.toggleTheme}} theme
-      <span class="admin-panel__button__slider_{{toggling.toggleTheme}}"></span>
+    <button class="admin-panel__button {{toggling.theme}}" (click)="toggleThemeColor()">
+      {{toggling.theme}} theme
     </button>
-    <button class="admin-panel__button_{{toggling.toggleCategories}}" (click)="toggleCategories()">
-      Categories {{toggling.toggleCategories}}
-      <span class="admin-panel__button__slider_{{toggling.toggleCategories}}"></span>
+    <button class="admin-panel__button {{toggling.categories}}" (click)="toggleCategories()">
+      Categories {{toggling.categories}}
     </button>
-    <button class="admin-panel__button_{{toggling.toggleLogIn}}" (click)="toggleLogIn()">
-      Log in {{toggling.toggleLogIn}}
-      <span class="admin-panel__button__slider_{{toggling.toggleLogIn}}"></span>
+    <button class="admin-panel__button {{toggling.logIn}}" (click)="toggleLogIn()">
+      Log in {{toggling.logIn}}
     </button>
   </div>
 </div>
