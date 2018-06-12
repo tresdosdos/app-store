@@ -1,9 +1,9 @@
 <nav class="header__nav">
   <ul>
     <li><a routerLink="/">Main page</a></li>
-    <li *ngIf="theme.categories"><a routerLink="/categories">Categories</a></li>
-    <li (click)="auth.logIn()" *ngIf="!userData?.username && theme.logIn">Log in</li>
-    <li *ngIf="userData?.username && theme.logIn" class="user-panel__container" (click)="toggleMenu()">
+    <li *ngIf="themeData?.categories"><a routerLink="/categories">Categories</a></li>
+    <li (click)="auth.logIn()" *ngIf="!userData?.username && themeData?.logIn">Log in</li>
+    <li *ngIf="userData?.username && themeData?.logIn" class="user-panel__container" (click)="toggleMenu()">
       {{userData?.username}}
       <app-user-menu *ngIf="isMenuOpen"></app-user-menu>
     </li>

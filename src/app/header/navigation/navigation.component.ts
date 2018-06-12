@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth-service/auth.service';
-import { THEME } from '../../theme-info';
-import {UserDataService} from '../../shared-services/user-data/user-data.service';
-import {User} from '../../mock-schemas/user';
+import { UserDataService } from '../../shared-services/user-data/user-data.service';
+import { User } from '../../mock-schemas/user';
+import { Theme } from '../../mock-schemas/theme';
+import {ThemeDataService} from '../../shared-services/theme-data/theme-data.service';
 
 @Component({
   selector: 'app-navigation',
@@ -11,10 +12,11 @@ import {User} from '../../mock-schemas/user';
 })
 export class NavigationComponent implements OnInit {
   public userData: User;
-  public theme = THEME;
+  public themeData: Theme;
   public isMenuOpen: boolean;
   constructor(public auth: AuthService,
-              private user: UserDataService) { }
+              private user: UserDataService,
+              private theme: ThemeDataService) { }
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
@@ -23,6 +25,8 @@ export class NavigationComponent implements OnInit {
     this.user.getUserObservableData().subscribe((userData: User) => {
       this.userData = userData;
     });
+    this.theme.getThemeObservableData().subscribe((themeData: Theme) => {
+      this.themeData = themeData;
+    });
   }
-
 }

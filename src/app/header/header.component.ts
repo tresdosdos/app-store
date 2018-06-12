@@ -1,18 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { THEME } from '../theme-info';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { STATIC_PATH, IMAGES } from '../constants';
+import { Theme } from '../mock-schemas/theme';
+import { ThemeDataService } from '../shared-services/theme-data/theme-data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
-  public theme = THEME;
+export class HeaderComponent implements OnInit, OnDestroy {
+  private subscription: Subscription;
+  public themeData: Theme;
   public logoUrl = STATIC_PATH + IMAGES.LOGO;
-  constructor() { }
+  constructor(private theme: ThemeDataService) { }
 
   ngOnInit() {
+    this.subscription = this.theme.getThemeObservableData().subscribe((themeData: Theme) => {
+      this.themeData = themeData;
+    });
   }
-
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

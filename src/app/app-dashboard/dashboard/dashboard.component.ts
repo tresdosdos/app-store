@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GetDataService } from '../data-service/get-data.service';
 import { App } from '../../mock-schemas/app';
-import { THEME } from '../../theme-info';
 import { TokenizingService } from '../token-service/tokenizing.service';
 import { Subscription } from 'rxjs';
+import {Theme} from '../../mock-schemas/theme';
+import {ThemeDataService} from '../../shared-services/theme-data/theme-data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,21 +12,24 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  private apps: App[];
-  private subscription: Subscription;
-  public theme = THEME;
+  private firstSubscription: Subscription;
+  private secondSubscription: Subscription;
+  public apps: App[];
+  public themeData: Theme;
   constructor(private data: GetDataService,
-              private token: TokenizingService) { }
-  public getInfo(): App[] {
-    return this.apps;
-  }
+              private token: TokenizingService,
+              private theme: ThemeDataService) { }
   ngOnInit() {
-    this.subscription = this.data.getData().subscribe((apps: App[]) => {
+    this.firstSubscription = this.data.getData().subscribe((apps: App[]) => {
       this.apps = apps;
+    });
+    this.secondSubscription = this.theme.getThemeObservableData().subscribe((themeData: Theme) => {
+      this.themeData = themeData;
     });
     this.token.tokenCheck();
   }
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.firstSubscription.unsubscribe();
+    this.secondSubscription.unsubscribe();
   }
 }

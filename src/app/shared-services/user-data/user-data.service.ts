@@ -6,14 +6,14 @@ import { User } from '../../mock-schemas/user';
   providedIn: 'root'
 })
 export class UserDataService {
-  private nullData = {
+  private startData = {
     username: '',
     logo: '',
     id: null,
     rights: ''
   };
-  private user = new BehaviorSubject(this.nullData);
-  public userData = this.user.asObservable();
+  private user = new BehaviorSubject(this.startData);
+  private userData = this.user.asObservable();
   constructor() { }
   public getUserObservableData(): Observable<User> {
     return this.userData;
@@ -25,6 +25,6 @@ export class UserDataService {
     this.user.next(userInfo);
   }
   public setNullData(): void {
-    this.user.next(this.nullData);
+    this.user.next(this.startData);
   }
 }

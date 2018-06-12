@@ -1,4 +1,4 @@
-<div class="app__container_{{theme.color}}" (click)="toggleModal()">
+<div class="app__container_{{themeData?.color}}" (click)="toggleModal()">
   <div class="app__container__hint" *ngIf="hint">{{hint}}</div>
   <img src='../{{STATIC_PATH}}{{app?.logo}}' class='app__logo'/>
   <h2 class="app__name">{{app?.app_name}}</h2>
