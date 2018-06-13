@@ -8,16 +8,15 @@ import { CATEGORIES } from '../../shared/constants';
 @Injectable({
   providedIn: 'root'
 })
-// TODO: add permission categories to methods
 export class GetDataService {
   private apps = new BehaviorSubject([]);
   public appData = this.apps.asObservable();
   constructor(private http: HttpServiceService,
               private router: Router) { }
-  fetchInfo(): Observable<App[]> {
+  private fetchInfo(): Observable<App[]> {
     return this.http.get('./assets/info.json');
   }
-  getData(): Observable<App[]> {
+  public getData(): Observable<App[]> {
     if (!this.apps.getValue().length) {
       this.fetchInfo().subscribe((apps: App[]) => {
         this.apps.next(apps);
@@ -25,7 +24,7 @@ export class GetDataService {
     }
     return this.appData;
   }
-  filterData(category: string, info): App[] {
+  public filterData(category: string, info): App[] {
       switch (category) {
         case CATEGORIES.KIDS.ID: {
           return info.filter((app) => {
@@ -46,12 +45,5 @@ export class GetDataService {
           this.router.navigate(['/']);
         }
       }
-  }
-  // search by 2 fields in lowercase
-  findApps(apps: App[], searchLine: string): App[] {
-    return apps.filter((app: App) => {
-      return app.app_name.toLocaleLowerCase().indexOf(searchLine.toLocaleLowerCase()) + 1
-        || app.publisher_name.toLocaleLowerCase().indexOf(searchLine.toLocaleLowerCase()) + 1;
-    });
   }
 }

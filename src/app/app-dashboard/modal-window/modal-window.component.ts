@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { App } from '../../shared/mock-schemas/app';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { GetDataService } from '../data-service/get-data.service';
 import { TokenizingService } from '../token-service/tokenizing.service';
 import { ISubscriptions } from '../../shared/interfaces';
@@ -27,14 +27,13 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
   }
   ngOnInit() {
     this.token.tokenCheck();
-    // TODO: flatMap
-    this. subscriptions. first = this.data.getData().subscribe((apps: App[]) => {
+    this.route.params.subscribe((params: Params) => {
+      this.id = params['id'];
+    }).unsubscribe();
+    this.subscriptions.first = this.data.getData().subscribe((apps: App[]) => {
       this.apps = apps;
-      this.route.params.subscribe(params => {
-            this.id = params['id'];
-              this.app = this.getApp();
-          }).unsubscribe();
-    });
+      this.app = this.getApp();
+      });
   }
   ngOnDestroy() {
     this.subscriptions.first.unsubscribe();

@@ -21,14 +21,20 @@ export class SearchDashboardComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute,
               private data: GetDataService,
               private token: TokenizingService) { }
+  // search by 2 fields in lowercase
+  findApps(searchLine: string): App[] {
+    return this.apps.filter((app: App) => {
+      return app.app_name.toLocaleLowerCase().indexOf(searchLine.toLocaleLowerCase()) + 1
+        || app.publisher_name.toLocaleLowerCase().indexOf(searchLine.toLocaleLowerCase()) + 1;
+    });
+  }
   ngOnInit() {
-    // TODO: flatMap
     this.token.tokenCheck();
-    this.data.getData().subscribe((apps: App[]) => {
+    this.subscriptions.first = this.data.getData().subscribe((apps: App[]) => {
       this.apps = apps;
-        this.subscriptions.first = this.route.params.subscribe(params => {
+        this.subscriptions.second = this.route.params.subscribe(params => {
           this.id = params['id'];
-          this.foundedApps = this.data.findApps(this.apps, this.id);
+          this.foundedApps = this.findApps(this.id);
           if (this.foundedApps.length === 0) {
             this.error = 'There is no matches';
           } else {
@@ -39,5 +45,6 @@ export class SearchDashboardComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     this.subscriptions.first.unsubscribe();
+    this.subscriptions.second.unsubscribe();
   }
 }
