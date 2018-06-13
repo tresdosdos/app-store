@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { HttpServiceService } from '../../shared/http-service/http-service.service';
+import { HttpService } from '../../shared/http-service/http.service';
 import { CATEGORIES } from '../../shared/constants';
 import { IApp } from '../../shared/interfaces';
 
@@ -11,7 +11,7 @@ import { IApp } from '../../shared/interfaces';
 export class GetDataService {
   private apps = new BehaviorSubject([]);
   public appData = this.apps.asObservable();
-  constructor(private http: HttpServiceService,
+  constructor(private http: HttpService,
               private router: Router) { }
   private fetchInfo(): Observable<IApp[]> {
     return this.http.get('./assets/info.json');

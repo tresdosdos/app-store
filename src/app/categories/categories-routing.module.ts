@@ -4,14 +4,20 @@ import { CategoriesComponent } from './categories/categories.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const categoriesRoutes: Routes = [
-  { path: 'categories', component: CategoriesComponent, pathMatch: 'prefix' },
-  { path: 'categories/:category', component: CategoriesComponent}
+  {
+    path: '',
+    component: CategoriesComponent
+  },
+  {
+    path: ':category',
+    component: CategoriesComponent
+  }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(categoriesRoutes)
+    RouterModule.forChild(categoriesRoutes)
   ],
   exports: [RouterModule],
   declarations: []

@@ -10,7 +10,7 @@ const CLIENT_SECRET = '506a292cb82940f885fa28dc30e6ef70';
 const REDIRECT_URI = 'http://localhost:5000';
 //const REDIRECT_URI = 'https://smartextask-app-store.herokuapp.com';
 
-app.use(express.static(__dirname + '/dist/apps-store'));
+app.use(express.static(__dirname + '/dist/app-store'));
 
 app.use(bodyParser.urlencoded({ extended: true })); ///нужное
 app.use(bodyParser.json());
@@ -40,12 +40,8 @@ app.post('/gettoken', function (req, res) {
   });
 });
 
-app.get('/*/*', function(req, res){
-  res.sendFile(path.join(__dirname +'/dist/apps-store/index.html'));
-});
-
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname +'/dist/apps-store/index.html'));
+  res.sendFile(path.join(__dirname +'/dist/app-store/index.html'));
 });
 
 console.log('Console listening on port ' + process.env.PORT);

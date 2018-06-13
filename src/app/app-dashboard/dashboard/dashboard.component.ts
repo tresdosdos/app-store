@@ -10,7 +10,7 @@ import { ISubscriptions, IApp, ITheme } from '../../shared/interfaces';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  private subscribitions: ISubscriptions = {
+  private subscriptions: ISubscriptions = {
     first: null,
     second: null
   };
@@ -20,16 +20,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
               private token: TokenizingService,
               private theme: ThemeDataService) { }
   ngOnInit() {
-    this.subscribitions.first = this.data.getData().subscribe((apps: IApp[]) => {
+    this.subscriptions.first = this.data.getData().subscribe((apps: IApp[]) => {
       this.apps = apps;
     });
-    this.subscribitions.second = this.theme.getThemeObservableData().subscribe((themeData: ITheme) => {
+    this.subscriptions.second = this.theme.getThemeObservableData().subscribe((themeData: ITheme) => {
       this.themeData = themeData;
     });
     this.token.tokenCheck();
   }
   ngOnDestroy() {
-    this.subscribitions.first.unsubscribe();
-    this.subscribitions.second.unsubscribe();
+    this.subscriptions.first.unsubscribe();
+    this.subscriptions.second.unsubscribe();
   }
 }

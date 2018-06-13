@@ -13,6 +13,7 @@ export class ThemeDataService {
   };
   private theme = new BehaviorSubject(this.startData);
   private themeData = this.theme.asObservable();
+  constructor() { }
   public getThemeObservableData(): Observable<ITheme> {
     return this.themeData;
   }
@@ -26,5 +27,4 @@ export class ThemeDataService {
       logIn: themeData.logIn
     });
   }
-  constructor() { }
 }

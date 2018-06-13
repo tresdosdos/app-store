@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SearchDashboardComponent } from '../search-dashboard/search-dashboard.component';
 
 const searchRoutes: Routes = [{
-  path: 'search/:id',
+  path: '',
   component: SearchDashboardComponent
 }
 ];

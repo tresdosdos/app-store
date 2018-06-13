@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth-service/auth.service';
-import { HttpServiceService } from '../../shared/http-service/http-service.service';
+import { HttpService } from '../../shared/http-service/http.service';
 import { ACCESS_TOKEN_URL, LOCALSTORAGE } from '../../shared/constants';
 import { ActivatedRoute } from '@angular/router';
 import { UserDataService } from '../../shared/user-data/user-data.service';
@@ -13,7 +13,7 @@ import { ILoginData } from '../../shared/interfaces';
 export class TokenizingService {
   private code: number;
   constructor(private auth: AuthService,
-              private http: HttpServiceService,
+              private http: HttpService,
               private route: ActivatedRoute,
               private user: UserDataService) { }
   remoteTokenFetch(): void {

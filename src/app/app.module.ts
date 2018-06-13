@@ -7,11 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppDashboardModule } from './app-dashboard/app-dashboard.module';
 import { AuthModule } from './auth/auth.module';
-import { CategoriesModule } from './categories/categories.module';
 import { CoreModule } from './core/core.module';
 import { HeaderModule } from './header/header.module';
-import { ModalWindowModule } from './modal-window/modal-window.module';
-import { SearchDashboardModule } from './search-dashboard/search-dashboard.module';
 
 
 @NgModule({
@@ -25,10 +22,7 @@ import { SearchDashboardModule } from './search-dashboard/search-dashboard.modul
     AppRoutingModule,
     AppDashboardModule,
     AuthModule,
-    CategoriesModule,
-    CoreModule,
-    ModalWindowModule,
-    SearchDashboardModule
+    CoreModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
