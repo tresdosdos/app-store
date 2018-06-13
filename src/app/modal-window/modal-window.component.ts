@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { GetDataService } from '../data-service/get-data.service';
-import { TokenizingService } from '../token-service/tokenizing.service';
-import { ISubscriptions, IApp } from '../../shared/interfaces';
+import { GetDataService } from '../core/data-service/get-data.service';
+import { TokenizingService } from '../auth/token-service/tokenizing.service';
+import { ISubscriptions, IApp } from '../shared/interfaces';
 
 @Component({
   selector: 'app-modal-window',

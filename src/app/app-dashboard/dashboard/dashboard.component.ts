@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { GetDataService } from '../data-service/get-data.service';
-import { TokenizingService } from '../token-service/tokenizing.service';
+import { GetDataService } from '../../core/data-service/get-data.service';
+import { TokenizingService } from '../../auth/token-service/tokenizing.service';
 import { ThemeDataService } from '../../shared/theme-data/theme-data.service';
 import { ISubscriptions, IApp, ITheme } from '../../shared/interfaces';
 

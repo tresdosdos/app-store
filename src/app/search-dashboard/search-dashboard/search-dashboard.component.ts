@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { GetDataService } from '../data-service/get-data.service';
+import { GetDataService } from '../../core/data-service/get-data.service';
 import { ActivatedRoute } from '@angular/router';
 import { ISubscriptions, IApp } from '../../shared/interfaces';
-import { TokenizingService } from '../token-service/tokenizing.service';
+import { TokenizingService } from '../../auth/token-service/tokenizing.service';
 
 @Component({
   selector: 'app-search-dashboard',

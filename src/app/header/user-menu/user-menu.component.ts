@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenizingService } from '../../app-dashboard/token-service/tokenizing.service';
-import { AuthService } from '../auth-service/auth.service';
+import { TokenizingService } from '../../auth/token-service/tokenizing.service';
+import { AuthService } from '../../auth/auth-service/auth.service';
 import { REDIRECT_URI } from '../../shared/constants';
 import { RIGHTS } from '../../shared/constants';
 

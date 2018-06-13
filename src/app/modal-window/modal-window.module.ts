@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ModalWindowComponent } from './modal-window.component';
+
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: []
+  declarations: [ModalWindowComponent]
 })
-export class CoreModule { }
+export class ModalWindowModule { }
