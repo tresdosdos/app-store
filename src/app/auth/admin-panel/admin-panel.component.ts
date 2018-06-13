@@ -46,13 +46,9 @@ export class AdminPanelComponent implements OnInit {
       (this.toggling.categories = TOGGLE_BUTTONS.ON) :
       (this.toggling.categories = TOGGLE_BUTTONS.OFF);
   }
-  // TODO: guard navigate
   ngOnInit() {
     this.user.getUserObservableData().subscribe((userData: IUser) => {
       this.userInfo = userData;
-      if (this.userInfo.rights !== RIGHTS.ADMIN) {
-        this.router.navigate(['/']);
-      }
     }).unsubscribe();
   }
 }

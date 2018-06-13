@@ -10,7 +10,8 @@ const appRoutes: Routes = [
   { path: 'search/:id', loadChildren: './search-dashboard/search-dashboard.module#SearchDashboardModule' },
   { path: 'categories', loadChildren: './categories/categories.module#CategoriesModule', pathMatch: 'prefix' },
   { path: 'auth', component: HeaderComponent },
-  { path: 'admin/panel', loadChildren: './auth/auth.module#AuthModule' }
+  { path: 'admin/panel', loadChildren: './auth/auth.module#AuthModule' },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
