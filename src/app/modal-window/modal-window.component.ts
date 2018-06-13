@@ -11,7 +11,6 @@ import { ISubscriptions, IApp } from '../shared/interfaces';
 })
 export class ModalWindowComponent implements OnInit, OnDestroy {
   private id: string;
-  private apps: IApp[];
   private subscriptions: ISubscriptions = {
     first: null
   };
@@ -19,8 +18,8 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute,
               private data: GetDataService,
               private token: TokenizingService) { }
-  getApp(): any {
-        return this.apps.find((app: IApp) => {
+  getApp(apps: IApp[]): any {
+        return apps.find((app: IApp) => {
           return app.id === this.id;
         });
   }
@@ -30,8 +29,7 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
       this.id = params['id'];
     }).unsubscribe();
     this.subscriptions.first = this.data.getData().subscribe((apps: IApp[]) => {
-      this.apps = apps;
-      this.app = this.getApp();
+      this.app = this.getApp(apps);
       });
   }
   ngOnDestroy() {

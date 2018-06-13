@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GetDataService } from '../../core/data-service/get-data.service';
 import { ActivatedRoute } from '@angular/router';
 import { TokenizingService } from '../../auth/token-service/tokenizing.service';
-import { ICONS } from '../../shared/constants';
+import { ICONS } from '../../shared/enums';
 import { ISubscriptions, IApp } from '../../shared/interfaces';
 
 @Component({
