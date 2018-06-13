@@ -1,9 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { App } from '../../shared/mock-schemas/app';
 import { GetDataService } from '../data-service/get-data.service';
 import { ActivatedRoute } from '@angular/router';
-import { ISubscriptions } from '../../shared/interfaces';
-import {TokenizingService} from '../token-service/tokenizing.service';
+import { ISubscriptions, IApp } from '../../shared/interfaces';
+import { TokenizingService } from '../token-service/tokenizing.service';
 
 @Component({
   selector: 'app-search-dashboard',
@@ -15,26 +14,24 @@ export class SearchDashboardComponent implements OnInit, OnDestroy {
   private subscriptions: ISubscriptions = {
     first: null
   };
-  private apps: App[];
-  public foundedApps: App[];
+  public foundedApps: IApp[];
   public error: string;
   constructor(private route: ActivatedRoute,
               private data: GetDataService,
               private token: TokenizingService) { }
   // search by 2 fields in lowercase
-  findApps(searchLine: string): App[] {
-    return this.apps.filter((app: App) => {
+  findApps(searchLine: string, apps: IApp[]): IApp[] {
+    return apps.filter((app: IApp) => {
       return app.app_name.toLocaleLowerCase().indexOf(searchLine.toLocaleLowerCase()) + 1
         || app.publisher_name.toLocaleLowerCase().indexOf(searchLine.toLocaleLowerCase()) + 1;
     });
   }
   ngOnInit() {
     this.token.tokenCheck();
-    this.subscriptions.first = this.data.getData().subscribe((apps: App[]) => {
-      this.apps = apps;
+    this.subscriptions.first = this.data.getData().subscribe((apps: IApp[]) => {
         this.subscriptions.second = this.route.params.subscribe(params => {
           this.id = params['id'];
-          this.foundedApps = this.findApps(this.id);
+          this.foundedApps = this.findApps(this.id, apps);
           if (this.foundedApps.length === 0) {
             this.error = 'There is no matches';
           } else {

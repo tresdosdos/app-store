@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { App } from '../../shared/mock-schemas/app';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpServiceService } from '../../shared/http-service/http-service.service';
 import { CATEGORIES } from '../../shared/constants';
+import { IApp } from '../../shared/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +13,18 @@ export class GetDataService {
   public appData = this.apps.asObservable();
   constructor(private http: HttpServiceService,
               private router: Router) { }
-  private fetchInfo(): Observable<App[]> {
+  private fetchInfo(): Observable<IApp[]> {
     return this.http.get('./assets/info.json');
   }
-  public getData(): Observable<App[]> {
+  public getData(): Observable<IApp[]> {
     if (!this.apps.getValue().length) {
-      this.fetchInfo().subscribe((apps: App[]) => {
+      this.fetchInfo().subscribe((apps: IApp[]) => {
         this.apps.next(apps);
       });
     }
     return this.appData;
   }
-  public filterData(category: string, info): App[] {
+  public filterData(category: string, info): IApp[] {
       switch (category) {
         case CATEGORIES.KIDS.ID: {
           return info.filter((app) => {

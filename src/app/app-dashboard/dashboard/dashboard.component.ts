@@ -1,10 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GetDataService } from '../data-service/get-data.service';
-import { App } from '../../shared/mock-schemas/app';
 import { TokenizingService } from '../token-service/tokenizing.service';
-import { Theme } from '../../shared/mock-schemas/theme';
 import { ThemeDataService } from '../../shared/theme-data/theme-data.service';
-import { ISubscriptions } from '../../shared/interfaces';
+import { ISubscriptions, IApp, ITheme } from '../../shared/interfaces';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,16 +14,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
     first: null,
     second: null
   };
-  public apps: App[];
-  public themeData: Theme;
+  public apps: IApp[];
+  public themeData: ITheme;
   constructor(private data: GetDataService,
               private token: TokenizingService,
               private theme: ThemeDataService) { }
   ngOnInit() {
-    this.subscribitions.first = this.data.getData().subscribe((apps: App[]) => {
+    this.subscribitions.first = this.data.getData().subscribe((apps: IApp[]) => {
       this.apps = apps;
     });
-    this.subscribitions.second = this.theme.getThemeObservableData().subscribe((themeData: Theme) => {
+    this.subscribitions.second = this.theme.getThemeObservableData().subscribe((themeData: ITheme) => {
       this.themeData = themeData;
     });
     this.token.tokenCheck();

@@ -4,8 +4,8 @@ import { AuthService } from '../../header/auth-service/auth.service';
 import { HttpServiceService } from '../../shared/http-service/http-service.service';
 import { ACCESS_TOKEN_URL, LOCALSTORAGE } from '../../shared/constants';
 import { ActivatedRoute } from '@angular/router';
-import { LoginData } from '../../shared/mock-schemas/loginData';
-import {UserDataService} from '../../shared/user-data/user-data.service';
+import { UserDataService } from '../../shared/user-data/user-data.service';
+import { ILoginData } from '../../shared/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class TokenizingService {
         this.http.post('/gettoken', {code: code}).subscribe(
           (tokenData: {
             access_token: string,
-            user: LoginData
+            user: ILoginData
           }) => {
           this.saveLocalToken(tokenData.access_token);
           this.auth.setUserData(tokenData.user);
@@ -37,7 +37,7 @@ export class TokenizingService {
     const token = this.getLocalToken();
     this.getUserData(token).subscribe(
       (userData: {
-        data: LoginData,
+        data: ILoginData,
         meta: {code: number}
       }) => {
       this.auth.setUserData(userData.data);
@@ -51,7 +51,7 @@ export class TokenizingService {
     }
     return this.code;
   }
-  getUserData(token: string): Observable<{data: LoginData, meta: {code: number}}> {
+  getUserData(token: string): Observable<{data: ILoginData, meta: {code: number}}> {
     this.saveLocalToken(token);
     return this.http.get(ACCESS_TOKEN_URL + token);
   }

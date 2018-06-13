@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RIGHTS, THEMES, TOGGLE_BUTTONS } from '../../shared/constants';
 import { UserDataService } from '../../shared/user-data/user-data.service';
-import { User } from '../../shared/mock-schemas/user';
 import { ThemeDataService } from '../../shared/theme-data/theme-data.service';
-import { IToggleButtons } from '../../shared/interfaces';
+import { IToggleButtons, IUser } from '../../shared/interfaces';
 
 @Component({
   selector: 'app-admin-panel',
@@ -12,7 +11,7 @@ import { IToggleButtons } from '../../shared/interfaces';
   styleUrls: ['./admin-panel.component.css']
 })
 export class AdminPanelComponent implements OnInit {
-  public userInfo: User;
+  public userInfo: IUser;
   public toggling: IToggleButtons;
   constructor(private router: Router,
               private user: UserDataService,
@@ -49,7 +48,7 @@ export class AdminPanelComponent implements OnInit {
   }
   // TODO: guard navigate
   ngOnInit() {
-    this.user.getUserObservableData().subscribe((userData: User) => {
+    this.user.getUserObservableData().subscribe((userData: IUser) => {
       this.userInfo = userData;
       if (this.userInfo.rights !== RIGHTS.ADMIN) {
         this.router.navigate(['/']);

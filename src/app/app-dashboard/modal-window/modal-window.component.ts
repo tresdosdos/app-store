@@ -1,9 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { App } from '../../shared/mock-schemas/app';
 import { ActivatedRoute, Params } from '@angular/router';
 import { GetDataService } from '../data-service/get-data.service';
 import { TokenizingService } from '../token-service/tokenizing.service';
-import { ISubscriptions } from '../../shared/interfaces';
+import { ISubscriptions, IApp } from '../../shared/interfaces';
 
 @Component({
   selector: 'app-modal-window',
@@ -12,16 +11,16 @@ import { ISubscriptions } from '../../shared/interfaces';
 })
 export class ModalWindowComponent implements OnInit, OnDestroy {
   private id: string;
-  private apps: App[];
+  private apps: IApp[];
   private subscriptions: ISubscriptions = {
     first: null
   };
-  public app: App;
+  public app: IApp;
   constructor(private route: ActivatedRoute,
               private data: GetDataService,
               private token: TokenizingService) { }
   getApp(): any {
-        return this.apps.find((app: App) => {
+        return this.apps.find((app: IApp) => {
           return app.id === this.id;
         });
   }
@@ -30,7 +29,7 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
     }).unsubscribe();
-    this.subscriptions.first = this.data.getData().subscribe((apps: App[]) => {
+    this.subscriptions.first = this.data.getData().subscribe((apps: IApp[]) => {
       this.apps = apps;
       this.app = this.getApp();
       });

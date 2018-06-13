@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {Theme} from '../mock-schemas/theme';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { ITheme } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +13,10 @@ export class ThemeDataService {
   };
   private theme = new BehaviorSubject(this.startData);
   private themeData = this.theme.asObservable();
-  public getThemeObservableData(): Observable<Theme> {
+  public getThemeObservableData(): Observable<ITheme> {
     return this.themeData;
   }
-  public getThemeData(): Theme {
+  public getThemeData(): ITheme {
     return this.theme.getValue();
   }
   public setThemeData(themeData: any): void {

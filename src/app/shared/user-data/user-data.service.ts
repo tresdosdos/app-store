@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from '../mock-schemas/user';
+import { IUser } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +15,13 @@ export class UserDataService {
   private user = new BehaviorSubject(this.startData);
   private userData = this.user.asObservable();
   constructor() { }
-  public getUserObservableData(): Observable<User> {
+  public getUserObservableData(): Observable<IUser> {
     return this.userData;
   }
-  public getUserData(): User {
+  public getUserData(): IUser {
     return this.user.getValue();
   }
-  public setUserData(userInfo: User): void {
+  public setUserData(userInfo: IUser): void {
     this.user.next(userInfo);
   }
   public setNullData(): void {

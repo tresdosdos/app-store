@@ -1,11 +1,9 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { App } from '../../shared/mock-schemas/app';
 import { Router } from '@angular/router';
 import { AuthService } from '../../header/auth-service/auth.service';
 import { RIGHTS, STATIC_PATH } from '../../shared/constants';
-import { Theme } from '../../shared/mock-schemas/theme';
 import { ThemeDataService } from '../../shared/theme-data/theme-data.service';
-import { ISubscriptions } from '../../shared/interfaces';
+import { ISubscriptions, IApp, ITheme } from '../../shared/interfaces';
 
 @Component({
   selector: 'app-app',
@@ -13,11 +11,11 @@ import { ISubscriptions } from '../../shared/interfaces';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  @Input() app: App;
+  @Input() app: IApp;
   private subscription: ISubscriptions = {
     first: null
   };
-  public themeData: Theme;
+  public themeData: ITheme;
   public hint: string;
   public STATIC_PATH = STATIC_PATH;
   constructor(private router: Router,
@@ -31,7 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
   ngOnInit() {
-    this.subscription.first = this.theme.getThemeObservableData().subscribe((themeData: Theme) => {
+    this.subscription.first = this.theme.getThemeObservableData().subscribe((themeData: ITheme) => {
       this.themeData = themeData;
     });
   }

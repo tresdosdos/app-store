@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GetDataService } from '../app-dashboard/data-service/get-data.service';
-import { App } from '../shared/mock-schemas/app';
 import { ActivatedRoute } from '@angular/router';
 import { TokenizingService } from '../app-dashboard/token-service/tokenizing.service';
 import { ICONS } from '../shared/constants';
-import { ISubscriptions } from '../shared/interfaces';
+import { ISubscriptions, IApp } from '../shared/interfaces';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,12 +11,12 @@ import { ISubscriptions } from '../shared/interfaces';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit, OnDestroy {
-  private apps: App[];
+  private apps: IApp[];
   private subscriptions: ISubscriptions = {
     first: null,
     second: null
   };
-  public filteredArr: App[];
+  public filteredArr: IApp[];
   public category: string;
   public symbol: string;
   public menuIsOpen: boolean;
@@ -37,7 +36,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   }
   ngOnInit() {
     this.token.tokenCheck();
-    this.subscriptions.first = this.data.getData().subscribe((apps: App[]) => {
+    this.subscriptions.first = this.data.getData().subscribe((apps: IApp[]) => {
       this.apps = apps;
       this.subscriptions.second = this.route.params.subscribe(params => {
             this.category = params['category'];
