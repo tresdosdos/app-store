@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { STATIC_PATH, IMAGES } from '../../shared/constants';
-import { ThemeDataService } from '../../shared/theme-data/theme-data.service';
+import { ThemeDataService } from '../../core/theme-data/theme-data.service';
 import { ISubscriptions, ITheme } from '../../shared/interfaces';
 
 @Component({

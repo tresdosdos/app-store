@@ -5,7 +5,7 @@ import { HttpService } from '../../shared/http-service/http.service';
 import { ACCESS_TOKEN_URL } from '../../shared/constants';
 import { LOCALSTORAGE } from '../../shared/enums';
 import { ActivatedRoute } from '@angular/router';
-import { UserDataService } from '../../shared/user-data/user-data.service';
+import { UserDataService } from '../../core/user-data/user-data.service';
 import { ILoginData } from '../../shared/interfaces';
 
 @Injectable({

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth-service/auth.service';
 import { RIGHTS, STATIC_PATH } from '../constants';
-import { ThemeDataService } from '../theme-data/theme-data.service';
+import { ThemeDataService } from '../../core/theme-data/theme-data.service';
 import { ISubscriptions, IApp, ITheme } from '../interfaces';
 
 @Component({

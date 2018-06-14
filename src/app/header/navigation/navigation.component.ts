@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../auth/auth-service/auth.service';
-import { UserDataService } from '../../shared/user-data/user-data.service';
-import { ThemeDataService } from '../../shared/theme-data/theme-data.service';
+import { UserDataService } from '../../core/user-data/user-data.service';
+import { ThemeDataService } from '../../core/theme-data/theme-data.service';
 import { ISubscriptions, ITheme, IUser } from '../../shared/interfaces';
 
 @Component({

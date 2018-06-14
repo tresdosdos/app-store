@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ADMINS, CLIENT_ID, REDIRECT_URI, RIGHTS } from '../../shared/constants';
-import { UserDataService } from '../../shared/user-data/user-data.service';
+import { UserDataService } from '../../core/user-data/user-data.service';
 import { ILoginData } from '../../shared/interfaces';
 
 @Injectable({
