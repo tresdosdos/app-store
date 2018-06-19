@@ -11,7 +11,7 @@ import { ISubscriptions, IApp, ITheme } from '../interfaces';
   styleUrls: ['./apps.component.css']
 })
 export class AppsComponent implements OnInit, OnDestroy {
-  @Input() app: IApp;
+  @Input('app') app: IApp;
   private subscription: ISubscriptions = {
     first: null
   };
